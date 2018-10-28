@@ -8,6 +8,8 @@
 </head>
 <body>
 <h1> ${message} !!! </h1>
+<button> Cancel Order </button>
+<button> Manage Dish</button>
 
 	<a href="logout.jsp">logout</a>
 
