@@ -8,21 +8,15 @@
 <title>Register</title>
 
 </head>
-<body>
-<form name="regform" action="Controller" method="post" onsubmit="return regValidate()">
-	<br>${message}<br>
-	
+<script>
 
-	
-	Password: <input type="password" name="password" id="password"> 
-	<br>
-	
-	<br>
-	<div id="password_error"></div><br>
-	<input type="submit" name="submit" value="register" >
-	<input type="reset" name="reset">
-	
-	</form>
-	
+function returnToLogin(){
+    window.history.back();
+}
+</script>
+<body>
+<br>${message}<br>
+<button onclick="returnToLogin()">Return</button>
+
 </body>
 </html>

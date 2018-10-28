@@ -1,6 +1,6 @@
 package domain.login;
 
-import static org.junit.Assert.*;
+
 import org.junit.Test;
 import org.junit.*;
 import org.openqa.selenium.*;
@@ -18,8 +18,6 @@ public class LoginTest {
 	
 	@Test
 	public void testLoginSuccess() throws InterruptedException{
-//		WebElement name = driver.findElement(By.id("username"));
-//		name.sendKeys("test");
 		Thread.sleep(3000);
 		WebElement adminMode = driver.findElements(By.tagName("button")).get(0);
 		adminMode.click();

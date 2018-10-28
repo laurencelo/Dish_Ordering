@@ -22,7 +22,6 @@ public class Controller extends HttpServlet {
 		
 		StaffDao staffDao = new StaffDaoImpl();
 		
-//		String username = request.getParameter("username");
 		String pass = request.getParameter("password");
 		String submitType = request.getParameter("submit");
 		String p = staffDao.validateCustomer(pass);
@@ -32,14 +31,11 @@ public class Controller extends HttpServlet {
 			request.setAttribute("message", "Login success");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}else if(submitType.equals("register")){
-//			c.setName(request.getParameter("name"));
-//			c.setUsername(request.getParameter("username"));
-			p=request.getParameter("password");
-			staffDao.register(p);
-			request.setAttribute("successMessage", "Registration done, please login!");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
+			// p=request.getParameter("password");
+			// staffDao.register(p);
+			// request.getRequestDispatcher("login.jsp").forward(request, response);
 		}else{
-			request.setAttribute("message", "Data Not Found! Please register!");
+			request.setAttribute("message", "Password doesn't match, please enter correct password!");
 			request.getRequestDispatcher("register.jsp").forward(request, response);
 		}
 
