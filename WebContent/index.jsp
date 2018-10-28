@@ -8,10 +8,7 @@
 <title>Landing Page</title>
 </head>
 <body>
-   <button onclick="window.location.href='login.jsp'">Admin Mode</button>
-	<button>Menu</button>
-    <script>
-    console.log(document.getElementById("adminmode").innerHTML);
-    </script>
+    <button onclick="window.location.href='login.jsp'">Admin Mode</button>
+    <button>Menu</button>
 </body>
 </html>

@@ -10,32 +10,32 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/LoginController")
-public class LoginController extends HttpServlet {
+@WebServlet("/Controller")
+public class Controller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public LoginController() {}
+    public Controller() {}
     
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		CustomerDao customerDao = new CustomerDaoImpl();
+		StaffDao staffDao = new StaffDaoImpl();
 		
 //		String username = request.getParameter("username");
 		String pass = request.getParameter("password");
 		String submitType = request.getParameter("submit");
-		Login login = new Login(pass);
-		Customer c = customerDao.validateCustomer(login);
+		String p = staffDao.validateCustomer(pass);
 		
-		if(submitType.equals("login") && (c.getPassword()!=null)){
+		if(submitType.equals("login") && (p!=null && p!="")){
+			System.out.println(p);
 			request.setAttribute("message", "Login success");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}else if(submitType.equals("register")){
 //			c.setName(request.getParameter("name"));
 //			c.setUsername(request.getParameter("username"));
-			c.setPassword(request.getParameter("password"));
-			customerDao.register(c);
+			p=request.getParameter("password");
+			staffDao.register(p);
 			request.setAttribute("successMessage", "Registration done, please login!");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}else{

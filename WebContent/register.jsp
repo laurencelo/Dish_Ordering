@@ -9,7 +9,7 @@
 
 </head>
 <body>
-<form name="regform" action="LoginController" method="post" onsubmit="return regValidate()">
+<form name="regform" action="Controller" method="post" onsubmit="return regValidate()">
 	<br>${message}<br>
 	
 

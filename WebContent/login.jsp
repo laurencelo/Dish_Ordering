@@ -27,7 +27,7 @@
 	%>
 	<br/>
 	
-	<form name="loginform" action="LoginController" method="post" onsubmit="return loginValidate()" >
+	<form name="loginform" action="Controller" method="post" onsubmit="return loginValidate()" >
 	<br>
 	${message}<br>
 	${successMessage}<br>
