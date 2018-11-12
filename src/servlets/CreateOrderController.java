@@ -25,7 +25,7 @@ public class CreateOrderController extends HttpServlet {
 		return userDaoImpl.getDishList();
 	}
 
-	private ArrayList<Dish> dl = getMenu();
+	private ArrayList<Dish> dl;
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -35,6 +35,7 @@ public class CreateOrderController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
+		this.dl= getMenu();
 		PrintWriter out = response.getWriter();
 		out.print("<!DOCTYPE html>");
 		out.print("<html>");
