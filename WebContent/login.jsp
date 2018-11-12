@@ -32,11 +32,9 @@
 	${message}<br>
 	${successMessage}<br>
 	
-	
-
+	User Id: <input type="text" name="userId" id="username"><br>
 	Password: <input type="password" name="password" id="password"><br>
 	<input type="submit" name="submit" value="login"><br>
-	<a href="register.jsp">registration</a>
 	
 	</form>
 </body>

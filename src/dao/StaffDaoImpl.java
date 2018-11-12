@@ -1,4 +1,4 @@
-package domain.login;
+package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -52,5 +52,21 @@ public class StaffDaoImpl implements StaffDao {
 		}
 		return fetchedPassword;
 	}
-
+	
+	public int addDish(String dishName, double dishPrice, int dishInventory) {
+		int status = 0;
+		try{
+			conn = db.getConnection();
+			ps =conn.prepareStatement("insert into dish values(?, ?, ?)");
+			ps.setString(1, dishName);
+			ps.setInt(2, dishInventory);
+			ps.setDouble(3, dishPrice);
+			status = ps.executeUpdate();
+			conn.close();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		return status;
+	}
+	
 }

@@ -1,5 +1,4 @@
 package model;
-
 public class Dish {
 	private String dishName;
 	private int inventory;
@@ -28,6 +27,13 @@ public class Dish {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+	
+	public DishLineItem getLineItem() {
+		DishLineItem dLI = new DishLineItem();
+		dLI.setDishName(this.dishName);
+		dLI.setPrice(this.price);
+		return dLI;
 	}
 ////	return a dish object
 //	public Dish display() {

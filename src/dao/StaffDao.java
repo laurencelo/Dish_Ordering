@@ -1,4 +1,4 @@
-package domain.login;
+package dao;
 /**
  * 
  * @author mehra
@@ -21,6 +21,7 @@ public interface StaffDao {
 	
 	//public Customer getCustomer(String username, String pass); This method does not needed as we have the Login object
 
+	public int addDish(String dishName, double dishPrice, int dishInventory);
 	
 }
 
