@@ -10,12 +10,16 @@ package db;
 
 /** 
  * Table code for user and dish:
- * CREATE TABLE user (userID int, password varchar(50), PRIMARY KEY (userID));
+CREATE TABLE user (userID int, password varchar(50), PRIMARY KEY (userID));
 INSERT INTO user (userID, password) VALUES (1, 'user1'), (2, 'user2');
-
 
 CREATE TABLE dish (name varchar(20), inventory int, price double, PRIMARY KEY (name));
 INSERT INTO dish (name, inventory, price) VALUES ('dish1', 1, 1.11), ('dish2', 2, 2.22), ('dish3', 3, 3.33);
+
+CREATE TABLE orderTotal (orderID int, total double, PRIMARY KEY (orderID));
+INSERT INTO orderTotal (orderID, total) VALUES (1, 111.11), (2, 222.22);
+CREATE TABLE orderDish (orderID int, dishname varchar(20), dishprice double, PRIMARY KEY(orderID));
+INSERT INTO orderDish (orderID, dishname, dishprice) VALUES (1, 'apple', 1.11), (2, 'banana', 2.22);
  */
 public interface MyDB {
 
