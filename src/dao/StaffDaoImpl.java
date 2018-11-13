@@ -36,7 +36,7 @@ public class StaffDaoImpl implements StaffDao {
 		String fetchedPassword = "";
 		try{
 			conn = db.getConnection();
-			ps =conn.prepareStatement("select * from customer where password=?");
+			ps =conn.prepareStatement("select * from user where password=?");
 //			ps.setString(1, login.getUsername());
 			ps.setString(1, password);
 
@@ -69,4 +69,17 @@ public class StaffDaoImpl implements StaffDao {
 		return status;
 	}
 	
+	public int removeDish(String dishName) {
+		int status = 0;
+		try{
+			conn = db.getConnection();
+			ps =conn.prepareStatement("DELETE FROM dish WHERE name=(?)");
+			ps.setString(1, dishName);
+			status = ps.executeUpdate();
+			conn.close();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		return status;
+	}
 }

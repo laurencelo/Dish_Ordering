@@ -13,7 +13,7 @@
 <body>
 <h1> ${message} !!! </h1>
 
-<button onclick="window.location.href='manageDish.jsp'"> Manage Dish</button>
+<button onclick="window.location.href='addDish.jsp'"> Manage Dish</button>
 
 	<a href="logout.jsp">logout</a>
 

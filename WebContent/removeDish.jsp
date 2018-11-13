@@ -3,14 +3,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<script type="text/javascript" src="script.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Home Page</title>
+<title>Remove Dish</title>
 </head>
 <body>
-	<button onclick="window.location.href='login.jsp'">Admin Mode</button>
-	<form action="createOrder" method="GET">
-		<button type="submit">Menu</button>
+
+	<form name="regform" action="removeDish" method="POST" onsubmit="return regValidate()">
+		
 	</form>
+	<br>
+	<a href="welcome.jsp">return</a>
+
 </body>
 </html>

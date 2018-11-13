@@ -7,10 +7,19 @@
 <title>Welcome Page</title>
 </head>
 <body>
-<h1> ${message} !!! </h1>
-<button onclick="window.location.href='cancelOrder.jsp'"> Cancel Order </button>
-<button onclick="window.location.href='manageDish.jsp'"> Manage Dish</button>
-
+<h1> ${message}</h1>
+<div><button onclick="window.location.href='cancelOrder.jsp'"> Cancel Order </button></div>
+<br>
+<div><button onclick="window.location.href='addDish.jsp'"> Add Dish</button></div>
+<br>
+<div>
+<form action="removeDish" method="GET">
+<button onclick="window.location.href='removeDish.jsp'">Remove Dish</button>
+</form>
+</div>
+<br>
+<div><button>Modify Dish</button></div>
+<br>
 	<a href="logout.jsp">logout</a>
 
 </body>

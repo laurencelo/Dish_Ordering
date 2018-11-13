@@ -23,5 +23,6 @@ public interface StaffDao {
 
 	public int addDish(String dishName, double dishPrice, int dishInventory);
 	
+	public int removeDish(String dishName);
 }
 

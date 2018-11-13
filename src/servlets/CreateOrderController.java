@@ -35,7 +35,7 @@ public class CreateOrderController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		this.dl= getMenu();
+		this.dl = getMenu();
 		PrintWriter out = response.getWriter();
 		out.print("<!DOCTYPE html>");
 		out.print("<html>");
@@ -56,18 +56,16 @@ public class CreateOrderController extends HttpServlet {
 					"<script>document.querySelectorAll(\"input.addDish\").forEach((node)=>{node.addEventListener(\"submit\",(event)=>{event.preventDefault();})});document.querySelectorAll(\"form\").forEach((node)=>{node.addEventListener(\"submit\",(event)=>{event.preventDefault();})}) </script>");
 		}
 		out.println("</body>");
+		
 		String dishName = request.getParameter("dishName");
 		for (Dish d : dl) {
 			if (dishName != null && dishName.equals(d.getDishName())) {
-//					System.out.println(dishName);
-//					System.out.println(d.getDishName());
 				this.order.putDishLineItem(d.getLineItem());
 			}
 		}
 		out.println("<br>");
 		out.println("<div>Order</div>");
 		out.println("<div>");
-
 		out.println("<table>");
 		out.println("<tr>");
 		out.println("<th>Dish name</th><th>Dish price</th>");
