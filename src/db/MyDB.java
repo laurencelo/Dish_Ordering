@@ -17,10 +17,11 @@ CREATE TABLE dish (name varchar(20), inventory int, price double, PRIMARY KEY (n
 INSERT INTO dish (name, inventory, price) VALUES ('dish1', 1, 1.11), ('dish2', 2, 2.22), ('dish3', 3, 3.33);
 
 CREATE TABLE orderTotal (orderID int AUTO_INCREMENT, total double, PRIMARY KEY (orderID));
-INSERT INTO orderTotal (total) VALUES (1.11), (2.22);
-CREATE TABLE orderDish (orderID int, dishname varchar(20), dishprice double, PRIMARY KEY(orderID));
+INSERT INTO orderTotal (total) VALUES (1.11);
+SET @orderID := LAST_INSERT_ID();
+CREATE TABLE orderDish (lineItemID int AUTO_INCREMENT, orderID int, dishname varchar(20), dishprice double, PRIMARY KEY (lineItemID));
 ALTER TABLE orderDish ADD FOREIGN KEY (orderID) REFERENCES orderTotal(orderID);
-INSERT INTO orderDish (dishname, dishprice) VALUES ('apple', 1.11), ('banana', 2.22);
+INSERT INTO orderDish (orderID, dishname, dishprice) VALUES (@orderID, 'apple', 1.11);
  */
 public interface MyDB {
 
