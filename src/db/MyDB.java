@@ -20,7 +20,7 @@ INSERT INTO dish (name, inventory, price) VALUES ('dish1', 1, 1.11), ('dish2', 2
 public interface MyDB {
 
 	String USER="root";
-	String PASS="root";
+	String PASS="Test12345";
 	String CONN_URL="jdbc:mysql://127.0.0.1:3306/coursedatabase";
 	
 	

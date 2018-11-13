@@ -16,10 +16,10 @@ import dao.StaffDaoImpl;
  * Servlet implementation class Login
  */
 @WebServlet("/dishController")
-public class dishController extends HttpServlet {
+public class AddDishController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public dishController() {
+	public AddDishController() {
 	}
 
 	@Override

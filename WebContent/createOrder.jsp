@@ -25,17 +25,9 @@
 				out.println("<tr>");
 				out.print("<td>" + dl.get(i).getDishName() + "</td>");
 				out.print("<td>" + dl.get(i).getPrice() + "</td>");
-				out.print("<td><button class=\"addDish\">" + dl.get(i).getDishName() + "</button></td>");
 				out.println("</tr>");
 			}
 			out.print("</table>");
-			out.println("<br>");
-			out.println("<div><h1>Order</h1></div>");
-			out.println("<div>");
-			out.println("<table>");
-			out.println("<thead><tr>");
-			out.println("<th>Dish name</th><th>Dish price</th>");
-			out.print("</tr></thead><tbody id=\"orderTable\"></tbody></table></div><button id=\"checkoutOrder\">Checkout Order</button>");
 %>
 <script type="text/javascript" src="createOrder.js" ></script>
 

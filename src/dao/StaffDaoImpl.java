@@ -19,9 +19,9 @@ public class StaffDaoImpl implements StaffDao {
 		int status = 0;
 		try{
 			conn = db.getConnection();
-			ps =conn.prepareStatement("insert into customer values(?)");
+			ps =conn.prepareStatement("insert into customer values(?,?,?)");
 //			ps.setString(1, c.getUsername());
-			ps.setString(1, password);
+			ps.setString(2, password);
 //			ps.setString(3, c.getName());
 			status = ps.executeUpdate();
 			conn.close();
