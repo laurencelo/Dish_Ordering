@@ -16,4 +16,7 @@ public class DishLineItem {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	public double getSubtotal() {
+		return getPrice();
+	}
 }
