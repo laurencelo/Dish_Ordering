@@ -25,4 +25,3 @@ public interface StaffDao {
 	
 	public int removeDish(String dishName);
 }
-

@@ -1,13 +1,10 @@
 package dao;
 
 import java.util.ArrayList;
-
-import db.DbManager;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.lang.*;
+import db.DbManager;
 import model.Dish;
 
 public class UserDaoImpl implements UserDao {

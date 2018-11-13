@@ -18,7 +18,8 @@ INSERT INTO dish (name, inventory, price) VALUES ('dish1', 1, 1.11), ('dish2', 2
 
 CREATE TABLE orderTotal (orderID int AUTO_INCREMENT, total double, PRIMARY KEY (orderID));
 INSERT INTO orderTotal (total) VALUES (1.11), (2.22);
-CREATE TABLE orderDish (orderID int AUTO_INCREMENT, dishname varchar(20), dishprice double, PRIMARY KEY(orderID));
+CREATE TABLE orderDish (orderID int, dishname varchar(20), dishprice double, PRIMARY KEY(orderID));
+ALTER TABLE orderDish ADD FOREIGN KEY (orderID) REFERENCES orderTotal(orderID);
 INSERT INTO orderDish (dishname, dishprice) VALUES ('apple', 1.11), ('banana', 2.22);
  */
 public interface MyDB {
