@@ -23,7 +23,12 @@ public class Order {
 	}
 
 	public double getTotal() {
-		return total;
+		double sum = 0;
+		for (int i = 0; i < this.dLI.size(); i++) {
+			sum += this.dLI.get(i).getPrice();
+		}
+		this.total=sum;
+		return this.total;
 	}
 
 	public void setTotal(double total) {
