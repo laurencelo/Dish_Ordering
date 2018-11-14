@@ -4,8 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import db.DbManager;
-
-
+import model.Order;
+import java.util.ArrayList;
+import model.DishLineItem;
 
 public class StaffDaoImpl implements StaffDao {
 
@@ -60,5 +61,34 @@ public class StaffDaoImpl implements StaffDao {
 			System.out.println(e);
 		}
 		return status;
+	}
+	
+	public ArrayList<Order> getOrderList(){
+		ArrayList<Order> orders=new ArrayList<Order>();
+		try{
+			conn = db.getConnection();
+			ps =conn.prepareStatement("select * from ordertotal");
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()){
+				Order order=new Order();
+				ArrayList<DishLineItem> dLI=new ArrayList<>();
+				String orderID = rs.getString(1);
+				String total=rs.getString(2);
+				ps =conn.prepareStatement("select dishname, dishprice from orderdish where orderID=?");
+				ps.setString(1, orderID);
+				ResultSet innerRs=ps.executeQuery();
+				while(innerRs.next()){
+					dLI.add(new DishLineItem( innerRs.getString(1),Double.parseDouble(innerRs.getString(2))));
+				}
+				order.setOrderId(Integer.parseInt(orderID));
+				order.setTotal( Double.parseDouble(total));
+				order.setdLI(dLI);
+				orders.add(order);
+			};
+			conn.close();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		return orders;
 	}
 }

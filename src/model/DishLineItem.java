@@ -19,4 +19,9 @@ public class DishLineItem {
 	public double getSubtotal() {
 		return getPrice();
 	}
+	public DishLineItem(String dishName, double price){
+		this.dishName=dishName;
+		this.price=price;
+	}
+	public DishLineItem(){};
 }

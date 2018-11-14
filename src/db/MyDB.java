@@ -26,7 +26,7 @@ INSERT INTO orderDish (orderID, dishname, dishprice) VALUES (@orderID, 'apple', 
 public interface MyDB {
 
 	String USER="root";
-	String PASS="Test12345";
+	String PASS="Test1234";
 	String CONN_URL="jdbc:mysql://127.0.0.1:3306/coursedatabase";
 	
 	
