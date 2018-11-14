@@ -41,7 +41,7 @@
 <script type="text/javascript" src="modifyDish.js" ></script>
 
 <button onclick="window.location.href='addDish.jsp'"> Add Dish</button>
-<button onclick="window.location.href='welcome.jsp'"> Manage Dish</button>
+<button onclick="window.location.href='welcome.jsp'"> Admin Page</button>
 
 	<a href="logout.jsp">logout</a>
 

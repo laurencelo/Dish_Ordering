@@ -12,10 +12,18 @@ $(document).ready(()=>{
         	$.post("createOrder",(data)=>{
                 console.log(data);
                 $("#orderTable").append("<tr><td>Total:</td><td>"+data+"</td></tr>");
-                $("#checkoutOrder").hide();
-                $(".addDish").hide();
-            })
+                $("#checkoutOrder").remove();
+                $("#menuTable").remove();
+            });
+            $("body").append("<div><button id=\"swipeCard\">Swipe Credit Card</button></div>");
+            $("#swipeCard").click(()=>{
+                $.get("createOrder",{swipeCreditCard:true},(data,status)=>{
+                    alert(data);
+                    window.location.href = "index.jsp";
+                })
+            });
         });
+        
     // setTimeout(()=>{console.log([...document.getElementsByClassName("addDish")]);},1000)
     
     // [0].innerHTML
