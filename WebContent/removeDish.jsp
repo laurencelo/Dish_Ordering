@@ -6,14 +6,26 @@
 <script type="text/javascript" src="script.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Remove Dish</title>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 </head>
 <body>
+<%
+	out.print("<!DOCTYPE html>");
+	out.print("<html>");
+	out.println("<head>");
+	out.println("<title>Remove Dish</title>");
+	out.println("</head>");
+	out.println("<body>");
+	out.print("<div>Choose a dish to remove:</div><br><div id=\"dishList\">");
+	out.println("</div>");
+	out.println("</body>");
 
-	<form name="regform" action="removeDish" method="POST" onsubmit="return regValidate()">
-		
-	</form>
-	<br>
-	<a href="welcome.jsp">return</a>
-
+%>
+<br>
+<a href="welcome.jsp">Return</a>
+<script type="text/javascript" src="removeDish.js" ></script>
 </body>
 </html>

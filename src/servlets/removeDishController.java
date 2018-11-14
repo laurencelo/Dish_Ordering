@@ -26,51 +26,25 @@ public class removeDishController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		this.dl = getMenu();
-
-		// Print Menu
 		PrintWriter out = response.getWriter();
-		out.print("<!DOCTYPE html>");
-		out.print("<html>");
-		out.println("<head>");
-		out.println("<title>Remove Dish</title>");
-		out.println("</head>");
-		out.println("<body>");
-		out.print("<div>Choose a dish to remove:</div><br>");
-		for (int i = 0; i < dl.size(); i++) {
-			out.println("<div>");
-			out.println("<form id=\"dishBtnForm\">"
-					+ "<input onclick=\"confirmMsg()\" id=\"dishBtn\" type=\"submit\" name=\"dishName\" value=\""
-					+ dl.get(i).getDishName() + "\">" + "</form><br>");
-//			out.print(
-//					"<form action=\"removeDish\" method=\"GET\"><input class=\"addDish\" type=\"submit\" name=\"dishName\" value=\""
-//							+ dl.get(i).getDishName() + "\"></form><br>");
-			out.println("</div>");
-//			out.println(
-//					"<script>document.querySelectorAll(\"input.addDish\").forEach((node)=>{node.addEventListener(\"submit\",(event)=>{event.preventDefault();})});document.querySelectorAll(\"form\").forEach((node)=>{node.addEventListener(\"submit\",(event)=>{event.preventDefault();})}) </script>");
-			out.println("<script>function confirmMsg() {"
-					+ "if(confirm(\"Remove this dish?\")){document.getElementById(\"dishBtnForm\").action=\"removeDish\"}"
-					+ "}</script>");
-		}
-		out.println("<a href=\"welcome.jsp\">return</a>");
-		out.println("</body>");
-
-		// Get dish name when user clicks on OK, dishName may be null when entering
-		// removeDish page at first time
+		this.dl = getMenu();
 		String dishName = "";
-		if (request.getParameter("dishName") != null) {
+		StaffDao staffDao = new StaffDaoImpl();
+
+		if (request.getParameterMap().containsKey("dishName")) {
 			dishName = request.getParameter("dishName");
+			for (Dish d : dl) {
+				if (dishName != null && dishName.equals(d.getDishName())) {
+					dl.remove(d);
+					staffDao.removeDish(dishName);
+					break;
+				}
+			}
+		} else if (request.getParameterMap().containsKey("init")) {
+			this.dl.forEach((dish) -> {
+				out.print("<button class=\"dishBtn\">" + dish.getDishName() + "</button><br><br>");
+			});
 		}
 
-		// Remove dish by given dish name
-		StaffDao staffDao = new StaffDaoImpl();
-		for (Dish d : dl) {
-			if (dishName != null && dishName.equals(d.getDishName())) {
-				dl.remove(d);
-				staffDao.removeDish(dishName);
-				break;
-			}
-		}
 	}
 }

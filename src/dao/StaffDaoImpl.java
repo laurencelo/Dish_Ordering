@@ -12,23 +12,6 @@ public class StaffDaoImpl implements StaffDao {
 	static Connection conn;
 	static PreparedStatement ps;
 	DbManager db = new DbManager();
-	
-//	@Override
-//	public int register(String password) {
-//		int status = 0;
-//		try{
-//			conn = db.getConnection();
-//			ps =conn.prepareStatement("insert into customer values(?)");
-////			ps.setString(1, c.getUsername());
-//			ps.setString(1, password);
-////			ps.setString(3, c.getName());
-//			status = ps.executeUpdate();
-//			conn.close();
-//		}catch(Exception e){
-//			System.out.println(e);
-//		}
-//		return status;
-//	}
 
 	@Override
 	public String validateCustomer(String password) {
