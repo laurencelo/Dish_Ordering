@@ -18,7 +18,7 @@
 </form>
 </div>
 <br>
-<div><button>Modify Dish</button></div>
+<div><button onclick="window.location.href='dish.jsp'">Modify Dish</button></div>
 <br>
 	<a href="logout.jsp">logout</a>
 
