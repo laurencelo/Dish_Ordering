@@ -11,7 +11,7 @@ public interface StaffDao {
 	 * @param c
 	 * @return
 	 */
-	public int register(String password);
+//	public int register(String password);
 	
 	/*
 	 * Retrieve the Customer object from the database
@@ -23,5 +23,5 @@ public interface StaffDao {
 
 	public int addDish(String dishName, double dishPrice, int dishInventory);
 	
+	public int removeDish(String dishName);
 }
-

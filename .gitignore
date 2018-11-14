@@ -63,6 +63,9 @@ local.properties
 # Eclipse Core
 .project
 
+#Eclipse Build files
+build/
+
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 

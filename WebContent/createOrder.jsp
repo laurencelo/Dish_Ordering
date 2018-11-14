@@ -25,7 +25,6 @@
 				out.println("<tr>");
 				out.print("<td>" + dl.get(i).getDishName() + "</td>");
 				out.print("<td>" + dl.get(i).getPrice() + "</td>");
-				out.print("<td><button class=\"addDish\">" + dl.get(i).getDishName() + "</button></td>");
 				out.println("</tr>");
 			}
 			out.print("</table></div>");

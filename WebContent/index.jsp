@@ -8,7 +8,7 @@
   integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
   crossorigin="anonymous"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Landing Page</title>
+<title>Home Page</title>
 </head>
 <body>
 	<button id="adminMode">Admin Mode</button>
