@@ -22,10 +22,10 @@ border-collapse: collapse;
 <body>
 <h1> Cancel Order </h1>
 <div id="cancelTable"></div>
-<button> submit</button>
 
-	<a href="welcome.jsp">return</a>
-	<a href="logout.jsp">logout</a>
+	<a href="welcome.jsp">Return</a>
+	<br>
+	<a href="logout.jsp">Logout</a>
 <script type="text/javascript" src="cancelOrder.js" ></script>
 </body>
 </html>

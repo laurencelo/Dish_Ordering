@@ -91,4 +91,19 @@ public class StaffDaoImpl implements StaffDao {
 		}
 		return orders;
 	}
+	
+//	if nothing is deleted, it will returns null
+	public ArrayList<Order> save(Order order){
+		int status = 0;
+		try{
+			conn = db.getConnection();
+			ps =conn.prepareStatement("DELETE FROM ordertotal WHERE orderID=(?)");
+			ps.setString(1, Integer.toString(order.getOrderId()));
+			status = ps.executeUpdate();
+			conn.close();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		return status==0?null:getOrderList();
+	}
 }

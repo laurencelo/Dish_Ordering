@@ -23,6 +23,31 @@ public class CancelOrderController extends HttpServlet {
     private ArrayList<Order> getOrderList(){
         return this.staffDaoImpl.getOrderList();
     };
+    private void printOrderDetailTable(PrintWriter out){  	   
+    	   this.ol=getOrderList();
+
+    	   out.print("<table><thead><tr><th>Order ID</th><th>Order Total</th><th>Dish Name</th><th>Dish Price</th></tr></thead><tbody id=\"orderTable\">");
+           for(int i=0;i<ol.size();i++) {
+           	 boolean firstTime=true;
+                out.print( "<tr><td rowspan=\""+(ol.get(i).getdLI().size()<1?1:ol.get(i).getdLI().size())+"\">"+ol.get(i).getOrderId()+"<div><button class=\"cancelButton\">cancel</button></div></td><td rowspan="+(ol.get(i).getdLI().size()<1?1:ol.get(i).getdLI().size())+">"+ol.get(i).getTotal()+"</td>"); 
+                for(int j=0;j<ol.get(i).getdLI().size();j++) {
+               	 out.print((firstTime?"":"<tr>")+"<td>"+ol.get(i).getdLI().get(j).getDishName()+"</td><td>"+ol.get(i).getdLI().get(j).getPrice()+"</td></tr>");
+               	 firstTime=false;
+                }
+           }
+           out.print("</tbody></table>");
+    }
+    
+    private void cancelOrder(int orderID) {
+    	for(int i=0;i<this.ol.size();i++) {
+    		if (this.ol.get(i).getOrderId()==orderID) {
+    			this.ol=this.staffDaoImpl.save(ol.get(i));
+//    			ol.remove(i);
+    			break;
+    		}
+    	};
+    	
+    }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -32,20 +57,13 @@ public class CancelOrderController extends HttpServlet {
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		if (request.getParameterMap().containsKey("init")&&request.getParameter("init").equals("true")) {
-            this.ol=getOrderList();
-            out.print("<table><thead><tr><th>Order ID</th><th>Order Total</th><th>Dish Name</th><th>Dish Price</th></tr></thead><tbody id=\"orderTable\">");
-            for(int i=0;i<ol.size();i++) {
-            	 boolean firstTime=true;
-                 out.print( "<tr><td rowspan=\""+(ol.get(i).getdLI().size()<1?1:ol.get(i).getdLI().size())+"\">"+ol.get(i).getOrderId()+"<div><button class=\"cancelButton\">cancel</button></div></td><td rowspan="+(ol.get(i).getdLI().size()<1?1:ol.get(i).getdLI().size())+">"+ol.get(i).getTotal()+"</td>"); 
-                 for(int j=0;j<ol.get(i).getdLI().size();j++) {
-                	 out.print((firstTime?"":"<tr>")+"<td>"+ol.get(i).getdLI().get(j).getDishName()+"</td><td>"+ol.get(i).getdLI().get(j).getPrice()+"</td></tr>");
-                	 firstTime=false;
-                 }
-            }
-            out.print("</tbody></table>");
+			System.out.println("inside");
+			printOrderDetailTable(out);
             
+		} else if (request.getParameterMap().containsKey("orderID")) {
+			cancelOrder(Integer.parseInt(request.getParameter("orderID")));
+			printOrderDetailTable(out);
 		}
-
 	}
 
 	/**

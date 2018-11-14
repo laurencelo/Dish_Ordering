@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;  
 
 import dao.StaffDao;
 import dao.StaffDaoImpl;
@@ -33,6 +34,8 @@ public class Controller extends HttpServlet {
 		
 		if(submitType.equals("login") && (p!=null && p!="")){
 			System.out.println(p);
+//			https://www.javatpoint.com/servlet-http-session-login-and-logout-example
+//			HttpSession session=request.getSession();  
 			request.setAttribute("message", "Login success");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}else if(submitType.equals("register")){
@@ -53,10 +56,10 @@ public class Controller extends HttpServlet {
 		out.print("<!DOCTYPE html>");
 		out.print("<html>");
 		out.println("<head>");
-		out.println("<title>Add Book Form</title>");
+		out.println("<title>Please Login</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<div>Hello!</div>");
+		out.println("<div>You should login first</div>");
 		out.println("</body>");
 	}
 
