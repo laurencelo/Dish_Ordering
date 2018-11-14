@@ -19,7 +19,7 @@ import model.DishLineItem;
 @WebServlet("/createOrder")
 public class CreateOrderController extends HttpServlet {
 	private UserDaoImpl userDaoImpl = new UserDaoImpl();
-	Order order = new Order();
+	private Order order = new Order();
 	private ArrayList<Dish> dl;
 
 	private ArrayList<Dish> getMenu() {
@@ -40,7 +40,7 @@ public class CreateOrderController extends HttpServlet {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		this.dl = getMenu();
 		PrintWriter out = response.getWriter();
-		if (request.getParameter("addDish").equals("true")) {
+		if (request.getParameterMap().containsKey("addDish")&&request.getParameter("addDish").equals("true")) {
 			for (Dish d : dl) {
 				if (request.getParameter("dishName").equals(d.getDishName())) {
 					this.order.putDishLineItem(d.getLineItem());
@@ -48,12 +48,10 @@ public class CreateOrderController extends HttpServlet {
 					out.print("<tr><td>" + temp.getDishName() + "</td><td>" + temp.getPrice() + "</td></tr>");
 				}
 			}
+		} else if (request.getParameterMap().containsKey("swipeCreditCard")&&request.getParameter("swipeCreditCard").equals("true")){
+						out.print(this.userDaoImpl.saveOrder(this.order));
+			this.order = new Order();
 		}
-
-//		for (int i = 0; i < this.order.getdLI().size(); i++) {
-//			String t1 = this.order.getdLI().get(i).getDishName();
-//			double t2 = this.order.getdLI().get(i).getPrice();
-//		}
 
 	}
 
@@ -69,7 +67,6 @@ public class CreateOrderController extends HttpServlet {
 		// System.out.println(dishName);
 		PrintWriter out = response.getWriter();
 		out.print(getTotal());
-		this.order = new Order();
 	}
 
 }

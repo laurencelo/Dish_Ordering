@@ -1,11 +1,13 @@
 package model;
 
 import java.util.*;
+import java.text.DecimalFormat;
+import java.math.RoundingMode;
 
 public class Order {
-	int orderId;
-	double total;
-	ArrayList<DishLineItem> dLI;
+	private int orderId;
+	private double total;
+	private ArrayList<DishLineItem> dLI;
 	
 	public Order() {
 		this.dLI= new ArrayList<DishLineItem>();
@@ -24,11 +26,13 @@ public class Order {
 
 	public double getTotal() {
 		double sum = 0;
+		DecimalFormat df = new DecimalFormat("#.##");
+		df.setRoundingMode(RoundingMode.CEILING);
 		for (int i = 0; i < this.dLI.size(); i++) {
 			sum += this.dLI.get(i).getPrice();
 		}
 		this.total=sum;
-		return this.total;
+		return Double.parseDouble(df.format(this.total));
 	}
 
 	public void setTotal(double total) {
