@@ -42,8 +42,7 @@ public class removeDishController extends HttpServlet {
 			out.println("<div>");
 			out.println("<form id=\"dishBtnForm\">"
 					+ "<input onclick=\"confirmMsg()\" id=\"dishBtn\" type=\"submit\" name=\"dishName\" value=\""
-					+ dl.get(i).getDishName() + "\">"
-							+ "</form><br>");
+					+ dl.get(i).getDishName() + "\">" + "</form><br>");
 //			out.print(
 //					"<form action=\"removeDish\" method=\"GET\"><input class=\"addDish\" type=\"submit\" name=\"dishName\" value=\""
 //							+ dl.get(i).getDishName() + "\"></form><br>");
@@ -57,12 +56,13 @@ public class removeDishController extends HttpServlet {
 		out.println("<a href=\"welcome.jsp\">return</a>");
 		out.println("</body>");
 
-		// Get dish name when user clicks on OK, dishName may be null when entering removeDish page at first time
+		// Get dish name when user clicks on OK, dishName may be null when entering
+		// removeDish page at first time
 		String dishName = "";
 		if (request.getParameter("dishName") != null) {
 			dishName = request.getParameter("dishName");
 		}
-		
+
 		// Remove dish by given dish name
 		StaffDao staffDao = new StaffDaoImpl();
 		for (Dish d : dl) {
