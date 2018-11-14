@@ -33,13 +33,14 @@ public class ModifyDishController extends HttpServlet {
 		String dishname = request.getParameter("dname");
 		String dishprice = request.getParameter("dprice");
 		String dishinventory = request.getParameter("dInventory");
-		System.out.println(request.getParameter("dname"));
+//		System.out.println(request.getParameter("dname"));
 		
 //		out.print("<tr><td>" + dishname + "</td><td>" + dishprice + "</td><td>" + dishinventory + "</td></tr>");
-		request.setAttribute("dname", "111111111");
+		request.setAttribute("dname", dishname);
 		request.setAttribute("dprice", dishprice);
 		request.setAttribute("dinventory", dishinventory);
 		request.getRequestDispatcher("modifyDish.jsp").forward(request, response);
+		
 //		if (request.getParameterMap().containsKey("addDish")&&request.getParameter("addDish").equals("true")) {
 //			for (Dish d : dl) {
 //				if (request.getParameter("dishName").equals(d.getDishName())) {

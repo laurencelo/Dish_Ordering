@@ -30,9 +30,9 @@
 			for (int i = 0; i < dl.size(); i++) {
 				out.println("<tr>");
 				
-				out.print("<td id=\"dishName\">" + dl.get(i).getDishName() + "</td>");
-				out.print("<td id=\"dishPrice\">" + dl.get(i).getPrice() + "</td>");
-				out.print("<td id=\"dishInventory\">" + dl.get(i).getInventory() + "</td>");
+				out.print("<td class=\"dishName\">" + dl.get(i).getDishName() + "</td>");
+				out.print("<td class=\"dishPrice\">" + dl.get(i).getPrice() + "</td>");
+				out.print("<td class=\"dishInventory\">" + dl.get(i).getInventory() + "</td>");
 				out.print("<td><button class=\"modifyDish\">edit</button></td>");
 				out.println("</tr>");
 			}

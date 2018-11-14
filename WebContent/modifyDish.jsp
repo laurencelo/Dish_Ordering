@@ -29,10 +29,10 @@
 			e.printStackTrace(); 
 			}
 	%> --%>
-	<div>${param["dname"]}</div>
-	Dish Name: <input type="text" class="nnnnnn" name="dishname"><br>
-	Dish Price: <input type="text" name="dishprice"> <br>
-	Dish Inventory: <input type="text" name="dishinventory"> <br>
+
+	Dish Name: <input type="text" name="dishname">${param["dname"]}<br>
+	Dish Price: <input type="text" name="dishprice">${param["dprice"]}<br>
+	Dish Inventory: <input type="text" name="dishinventory">${param["dInventory"]}<br>
 	
 	<div id="password_error"></div><br>
 	<input type="submit" name="submit" value="updateDish" >
