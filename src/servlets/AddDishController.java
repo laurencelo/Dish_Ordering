@@ -15,7 +15,7 @@ import dao.StaffDaoImpl;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/dishController")
+@WebServlet("/addDish")
 public class AddDishController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -35,8 +35,9 @@ public class AddDishController extends HttpServlet {
 
 		if (submitType.equals("addDish")) {
 			staffDao.addDish(dishName, dishPrice, dishInventory);
-			request.setAttribute("message", "Add dish success");
-			request.getRequestDispatcher("dish.jsp").forward(request, response);
+//			request.setAttribute("message", "Add dish success");
+//			request.getRequestDispatcher("dish.jsp").forward(request, response);
+//			response.sendRedirect("modifyDish.jsp");
 		} else {
 			request.setAttribute("message", "Password doesn't match, please enter correct password!");
 			request.getRequestDispatcher("register.jsp").forward(request, response);

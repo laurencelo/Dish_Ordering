@@ -3,13 +3,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="addDishValidate.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add Dish</title>
-
+<script
+  	src="https://code.jquery.com/jquery-3.3.1.min.js" 
+  	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  	crossorigin="anonymous">
+	</script>
 </head>
 <body>
-<form name="regform" action="dishController" method="post" onsubmit="return regValidate()">
+<form name="regform" action="addDish" method="post" onsubmit="return regValidate()">
 	<br>${message}<br>
 	
 	<%
@@ -32,6 +36,6 @@
 	
 	</form>
 	<a href="welcome.jsp">return</a>
-	
+<script type="text/javascript" src="addDish.js"></script>
 </body>
 </html>
