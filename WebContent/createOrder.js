@@ -2,27 +2,57 @@ $(document).ready(()=>{
         [...document.getElementsByClassName("addDish")].forEach((dish)=>{
             dish.addEventListener("click",()=>{
                 $.get("createOrder",{addDish:true,dishName:dish.innerHTML},(data,status)=>{
-                    console.log(data)
-                    $("#orderTable").append(data);
+                    $("#orderTable").empty().append(data);
                 })
             })
         });
         
         $("#checkoutOrder").click(()=>{
-        	$.post("createOrder",(data)=>{
-                console.log(data);
-                $("#orderTable").append("<tr><td>Total:</td><td>"+data+"</td></tr>");
-                $("#checkoutOrder").remove();
-                $("#menuTable").remove();
-            });
-            $("body").append("<div><button id=\"swipeCard\">Swipe Credit Card</button></div>");
-            $("#swipeCard").click(()=>{
-                $.get("createOrder",{swipeCreditCard:true},(data,status)=>{
-                    alert(data);
-                    window.location.href = "index.jsp";
-                })
-            });
+        	if(document.getElementById("#rowTotal")==null){
+        		console.log("Null rowTotal");
+	        	$.post("createOrder",(data)=>{
+	        		$("#orderTable").append("<tr id=\"rowTotal\"><td>Total:</td><td>"+data+"</td></tr>");
+	            });
+        	}
+        	else{
+        		//show
+        		$("#rowTotal").toggle();
+        	}
+        	//hide
+            $("#checkoutOrder").toggle();
+            $("#menuTable").toggle();
+            $("#returnBtn").toggle();
+            //show
+            $("#swipeCard").toggle();
+    		$("#backBtn").toggle();
         });
+        
+        $("#swipeCard").click(()=>{
+            $.get("createOrder",{swipeCreditCard:true},(data,status)=>{
+                alert(data);
+                window.location.href = "index.jsp";
+            })
+        });
+        
+        $("#backBtn").click(()=>{
+        	//show
+        	$("#checkoutOrder").toggle();
+            $("#menuTable").toggle();
+            $("#returnBtn").toggle();
+            //hide
+            $("#rowTotal").toggle();
+    		$("#swipeCard").toggle();
+    		$("#backBtn").toggle();
+        })
+        
+        $("#returnBtn").click(()=>{
+        	$.get("createOrder",{resetOrder:true},()=>{
+                window.location.href = "index.jsp";
+            })
+        })
+        
+        $("#swipeCard").display = "none";
+        $("#backBtn").display = "none";
         
     // setTimeout(()=>{console.log([...document.getElementsByClassName("addDish")]);},1000)
     

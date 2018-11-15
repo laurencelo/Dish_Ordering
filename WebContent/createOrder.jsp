@@ -8,35 +8,35 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Create Order</title>
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
 </head>
 <body>
-<%
-            UserDaoImpl userDaoImpl=new UserDaoImpl();
-            ArrayList<Dish> dl=userDaoImpl.getDishList();
-			out.print("<div  id=\"menuTable\"><h1>Menu</h1>");
-			out.print(
-					"<table><thead><tr><th>Dish name</th><th>Price</th><th>Add to Order</th></tr></thead><tbody >");
-			for (int i = 0; i < dl.size(); i++) {
-				out.println("<tr>");
-				out.print("<td>" + dl.get(i).getDishName() + "</td>");
-				out.print("<td>" + dl.get(i).getPrice() + "</td>");
-				out.print("<td><button class=\"addDish\">" + dl.get(i).getDishName() + "</button></td>");
-				out.println("</tr>");
-			}
-			out.print("</table></div>");
-			out.println("<br>");
-			out.println("<div><h1>Order</h1></div>");
-			out.println("<div>");
-			out.println("<table>");
-			out.println("<thead><tr>");
-			out.println("<th>Dish name</th><th>Dish price</th>");
-			out.print("</tr></thead><tbody id=\"orderTable\"></tbody></table></div><button id=\"checkoutOrder\">Checkout Order</button>");
-%>
-<script type="text/javascript" src="createOrder.js" ></script>
-
+	<%
+		UserDaoImpl userDaoImpl = new UserDaoImpl();
+		ArrayList<Dish> dl = userDaoImpl.getDishList();
+		out.print("<div  id=\"menuTable\"><h1>Menu</h1>");
+		out.print("<table><thead><tr><th>Dish Name</th><th>Price</th></tr></thead><tbody >");
+		for (int i = 0; i < dl.size(); i++) {
+			out.println("<tr>");
+			out.print("<td><button class=\"addDish\">" + dl.get(i).getDishName() + "</button></td>");
+			out.print("<td>$" + dl.get(i).getPrice() + "</td>");
+			out.println("</tr>");
+		}
+		out.print("</table></div>");
+		out.println("<br>");
+		out.println("<div><h1>Order</h1></div>");
+		out.println("<div>");
+		out.println("<table>");
+		out.println("<thead><tr>");
+		out.println("<th>Dish Name </th><th>Price </th>");
+		out.println(
+				"</tr></thead><tbody id=\"orderTable\"></tbody></table></div><button id=\"checkoutOrder\">Checkout Order</button><br>");
+		out.println("<div><button id=\"returnBtn\">Home Page</button></div>");
+		out.println("<div><button id=\"swipeCard\" style=\"display: none;\">Swipe Card</button></div>");
+		out.print("<div><button id=\"backBtn\" style=\"display: none;\">Back To Cart</button></div>");
+	%>
+	<script type="text/javascript" src="createOrder.js"></script>
 </body>
 </html>

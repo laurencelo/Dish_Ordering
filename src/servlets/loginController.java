@@ -1,4 +1,4 @@
-package domain.login;
+package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,11 +17,11 @@ import dao.StaffDaoImpl;
  * Servlet implementation class Login
  */
 @WebServlet("/Controller")
-public class Controller extends HttpServlet {
+public class loginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public Controller() {}
+    public loginController() {}
     
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -40,19 +40,24 @@ public class CreateOrderController extends HttpServlet {
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		this.dl = getMenu();
 		PrintWriter out = response.getWriter();
-		if (request.getParameterMap().containsKey("addDish")&&request.getParameter("addDish").equals("true")) {
+		if (request.getParameterMap().containsKey("addDish") && request.getParameter("addDish").equals("true")) {
 			for (Dish d : dl) {
 				if (request.getParameter("dishName").equals(d.getDishName())) {
 					this.order.putDishLineItem(d.getLineItem());
-					DishLineItem temp = this.order.getdLI().get(this.order.getdLI().size() - 1);
-					out.print("<tr><td>" + temp.getDishName() + "</td><td>" + temp.getPrice() + "</td></tr>");
 				}
 			}
-		} else if (request.getParameterMap().containsKey("swipeCreditCard")&&request.getParameter("swipeCreditCard").equals("true")){
-						out.print(this.userDaoImpl.saveOrder(this.order));
+			this.order.getdLI().forEach((dish)->{
+				out.print("<tr><td>" + dish.getDishName() + "</td><td>$" + dish.getPrice() + "</td></tr>");
+			});
+		} else if (request.getParameterMap().containsKey("swipeCreditCard")
+				&& request.getParameter("swipeCreditCard").equals("true")) {
+			out.print(this.userDaoImpl.saveOrder(this.order));
+			this.order = new Order();
+		} else if (request.getParameterMap().containsKey("resetOrder")
+				&& request.getParameter("resetOrder").equals("true")) {
+			out.print("");
 			this.order = new Order();
 		}
-
 	}
 
 	/**
@@ -66,7 +71,7 @@ public class CreateOrderController extends HttpServlet {
 		// String dishName = request.getParameter("dishName");
 		// System.out.println(dishName);
 		PrintWriter out = response.getWriter();
-		out.print(getTotal());
+		out.print("$" + Double.toString(getTotal()));
 	}
 
 }
