@@ -15,16 +15,16 @@ public class StaffDaoImpl implements StaffDao {
 	DbManager db = new DbManager();
 
 	@Override
-	public String validateCustomer(String password) {
+	public String validateCustomer(String userId,String password) {
 		String fetchedPassword = "";
 		try{
 			conn = db.getConnection();
-			ps =conn.prepareStatement("select * from user where password=?");
-			ps.setString(1, password);
-
+			ps =conn.prepareStatement("select * from user where userID=? and password=?");
+			ps.setString(1, userId);
+			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
 			while(rs.next()){
-				fetchedPassword = rs.getString(1);
+				fetchedPassword = rs.getString(2);
 			}
 			conn.close();
 		}catch(Exception e){

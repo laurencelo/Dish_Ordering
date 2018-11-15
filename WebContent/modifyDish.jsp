@@ -17,26 +17,22 @@
   	crossorigin="anonymous">
 	</script>
 	
-	<%-- <%
-		/* int start = Integer.parseInt(request.getParameter("name")); //not working
-		out.print(start); */
-		try{ 
-			int start=Integer.parseInt(request.getParameter("name")); 
-			out.print("start-->"+start); 
-			} 
-			catch(Exception e) 
-			{ 
-			e.printStackTrace(); 
-			}
-	%> --%>
+	<%
+		if (session != null) {
+			if (session.getAttribute("userId") != null) {		
+				out.println("Dish Name: <input type=\"text\" name=\"dishname\">${param[\"dname\"]}<br>");
+				out.println("Dish Price: <input type=\"text\" name=\"dishprice\">${param[\"dprice\"]}<br>");
+				out.println("Dish Inventory: <input type=\"text\" name=\"dishinventory\">${param[\"dInventory\"]}<br>");
+				out.println("<div id=\"password_error\"></div><br>");
+				out.println("<input type=\"submit\" name=\"submit\" value=\"updateDish\" >");
+				out.println("<input type=\"reset\" name=\"reset\">");
 
-	Dish Name: <input type="text" name="dishname">${param["dname"]}<br>
-	Dish Price: <input type="text" name="dishprice">${param["dprice"]}<br>
-	Dish Inventory: <input type="text" name="dishinventory">${param["dInventory"]}<br>
-	
-	<div id="password_error"></div><br>
-	<input type="submit" name="submit" value="updateDish" >
-	<input type="reset" name="reset">
+			} else {
+				out.println("<div>Please log in first</div>");
+			}
+		}
+	%>
+
 	
 	
 	</form>

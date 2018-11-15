@@ -13,15 +13,24 @@
 </head>
 <body>
 <%
-	out.print("<!DOCTYPE html>");
-	out.print("<html>");
-	out.println("<head>");
-	out.println("<title>Remove Dish</title>");
-	out.println("</head>");
-	out.println("<body>");
-	out.print("<div>Choose a dish to remove:</div><br><div id=\"dishList\">");
-	out.println("</div>");
-	out.println("</body>");
+
+
+if (session != null) {
+	if (session.getAttribute("userId") != null) {				
+		out.print("<!DOCTYPE html>");
+		out.print("<html>");
+		out.println("<head>");
+		out.println("<title>Remove Dish</title>");
+		out.println("</head>");
+		out.println("<body>");
+		out.print("<div>Choose a dish to remove:</div><br><div id=\"dishList\">");
+		out.println("</div>");
+		out.println("</body>");
+	} else {
+		out.println("<div>Please log in first</div>");
+	}
+}
+
 
 %>
 <br>

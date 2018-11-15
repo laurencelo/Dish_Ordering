@@ -16,9 +16,8 @@ public interface StaffDao {
 	/*
 	 * Retrieve the Customer object from the database
 	 */
-	public String validateCustomer(String password);
+	public String validateCustomer(String userId,String password);
 
-	
 	//public Customer getCustomer(String username, String pass); This method does not needed as we have the Login object
 
 	public int addDish(String dishName, double dishPrice, int dishInventory);
