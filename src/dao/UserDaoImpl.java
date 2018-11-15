@@ -67,4 +67,26 @@ public class UserDaoImpl implements UserDao {
 		}
 		return "Saving order success!";
 	}
-}
+	
+	public ArrayList<Dish> modifyDish(String originalName, String modifiedName, String modifiedInventory,String modifiedPrice) {
+		int status = 0;
+		try{
+			
+			conn = db.getConnection();
+			ps =conn.prepareStatement("UPDATE dish SET name=?, inventory=?, price=? where name=?");
+			ps.setString(1, modifiedName);
+			ps.setInt(2,Integer.parseInt(modifiedInventory));
+			ps.setDouble(3, Double.parseDouble(modifiedPrice));
+			ps.setString(4,originalName);
+			status = ps.executeUpdate();
+			
+			conn.close();
+		}catch(Exception e){
+			System.out.println(e);
+		}
+		return status==0?null:getDishList();
+	}
+	}
+	
+	
+

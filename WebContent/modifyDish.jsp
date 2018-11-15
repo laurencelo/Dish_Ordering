@@ -5,39 +5,20 @@
 <head>
 <script type="text/javascript" src="script.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Add Dish</title>
-
-</head>
-<body>
-<form name="regform" action="ModifyDishController" method="post" onsubmit="return regValidate()">
-	<br>${message}<br>
-	<script
+<title>Modify Dish</title>
+<script
   	src="https://code.jquery.com/jquery-3.3.1.min.js" 
   	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   	crossorigin="anonymous">
 	</script>
-	
-	<%
-		if (session != null) {
-			if (session.getAttribute("userId") != null) {		
-				out.println("Dish Name: <input type=\"text\" name=\"dishname\">${param[\"dname\"]}<br>");
-				out.println("Dish Price: <input type=\"text\" name=\"dishprice\">${param[\"dprice\"]}<br>");
-				out.println("Dish Inventory: <input type=\"text\" name=\"dishinventory\">${param[\"dInventory\"]}<br>");
-				out.println("<div id=\"password_error\"></div><br>");
-				out.println("<input type=\"submit\" name=\"submit\" value=\"updateDish\" >");
-				out.println("<input type=\"reset\" name=\"reset\">");
-
-			} else {
-				out.println("<div>Please log in first</div>");
-			}
-		}
-	%>
+</head>
+<body>
 
 	
+	<div id="modifyDishList"></div>
 	
-	</form>
 	<a href="welcome.jsp">return</a>
-	
+	<script type="text/javascript" src="modifyDish.js?192" ></script>
 </body>
-	<!-- <script type="text/javascript" src="modifyDish.js" ></script> -->
+
 </html>

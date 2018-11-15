@@ -27,7 +27,7 @@
 	</div>
 	<br>
 	<div>
-		<button>Modify Dish</button>
+		<button onclick="window.location.href='modifyDish.jsp'">Modify Dish</button>
 	</div>
 	<br>
 	<a href="logout.jsp">logout</a>
