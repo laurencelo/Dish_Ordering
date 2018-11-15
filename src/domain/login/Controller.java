@@ -29,13 +29,16 @@ public class Controller extends HttpServlet {
 		StaffDao staffDao = new StaffDaoImpl();
 		
 		String pass = request.getParameter("password");
+		String userId=request.getParameter("userId");
 		String submitType = request.getParameter("submit");
-		String p = staffDao.validateCustomer(pass);
+		String p = staffDao.validateCustomer(userId,pass);
 		
 		if(submitType.equals("login") && (p!=null && p!="")){
-			System.out.println(p);
 //			https://www.javatpoint.com/servlet-http-session-login-and-logout-example
-//			HttpSession session=request.getSession();  
+			HttpSession session=request.getSession();
+			session.setAttribute("userId", request.getParameter("userId"));
+			System.out.println(request.getParameter("userId"));
+			System.out.println(session.getAttribute("userId"));
 			request.setAttribute("message", "Login success");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}else if(submitType.equals("register")){
@@ -52,6 +55,7 @@ public class Controller extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session=request.getSession(false);
 		PrintWriter out= response.getWriter();
 		out.print("<!DOCTYPE html>");
 		out.print("<html>");
@@ -59,8 +63,13 @@ public class Controller extends HttpServlet {
 		out.println("<title>Please Login</title>");
 		out.println("</head>");
 		out.println("<body>");
-		out.println("<div>You should login first</div>");
+		if (session.getAttribute("userId")==null) {
+		out.println("<div>You should login first</div>");}
+		else {
+			out.println("<div>You have logged in</div>"+session.getAttribute("userId")+"!");
+		}
 		out.println("</body>");
+		out.close();
 	}
 
 }

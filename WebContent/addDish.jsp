@@ -12,13 +12,23 @@
 <form name="regform" action="dishController" method="post" onsubmit="return regValidate()">
 	<br>${message}<br>
 	
-	Dish Name: <input type="text" name="dishname"> <br>
-	Dish Price: <input type="text" name="dishprice"> <br>
-	Dish Inventory: <input type="text" name="dishinventory"> <br>
+	<%
+		if (session != null) {
+			if (session.getAttribute("userId") != null) {				
+				out.println("Dish Name: <input type=\"text\" name=\"dishname\"> <br>");
+				out.println("Dish Price: <input type=\"text\" name=\"dishprice\"> <br>");
+				out.println("Dish Inventory: <input type=\"text\" name=\"dishinventory\"> <br>");	
+				out.println("<div id=\"password_error\"></div><br>");
+				out.println("<input type=\"submit\" name=\"submit\" value=\"addDish\" >");
+				out.println("<input type=\"reset\" name=\"reset\">");
+			} else {
+				out.println("<div>Please log in first</div>");
+			}
+		}
+	%>
+
 	
-	<div id="password_error"></div><br>
-	<input type="submit" name="submit" value="addDish" >
-	<input type="reset" name="reset">
+
 	
 	</form>
 	<a href="welcome.jsp">return</a>

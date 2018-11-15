@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;  
 import java.io.PrintWriter;
 import model.Dish;
 import dao.StaffDaoImpl;
@@ -25,7 +26,6 @@ public class CancelOrderController extends HttpServlet {
     };
     private void printOrderDetailTable(PrintWriter out){  	   
     	   this.ol=getOrderList();
-
     	   out.print("<table><thead><tr><th>Order ID</th><th>Order Total</th><th>Dish Name</th><th>Dish Price</th></tr></thead><tbody id=\"orderTable\">");
            for(int i=0;i<ol.size();i++) {
            	 boolean firstTime=true;
@@ -57,12 +57,23 @@ public class CancelOrderController extends HttpServlet {
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		if (request.getParameterMap().containsKey("init")&&request.getParameter("init").equals("true")) {
-			System.out.println("inside");
+			HttpSession session=request.getSession(false);
+			if(session.getAttribute("userId")!=null) {
 			printOrderDetailTable(out);
+			System.out.println(session.getAttribute("userId"));
+			}
+			else {
+				out.print("<div>Please Login first!</div>");
+			}
             
 		} else if (request.getParameterMap().containsKey("orderID")) {
+			HttpSession session=request.getSession(false);
+			if(session!=null) {
 			cancelOrder(Integer.parseInt(request.getParameter("orderID")));
-			printOrderDetailTable(out);
+			printOrderDetailTable(out);}
+			else {
+				out.print("<div>Please Login first!</div>");
+			}
 		}
 	}
 
