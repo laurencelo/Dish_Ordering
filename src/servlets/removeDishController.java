@@ -17,9 +17,13 @@ import model.Dish;
 @WebServlet("/removeDish")
 public class removeDishController extends HttpServlet {
 	private UserDaoImpl userDaoImpl = new UserDaoImpl();
-
+	StaffDao staffDao = new StaffDaoImpl();
 	private ArrayList<Dish> getMenu() {
 		return userDaoImpl.getDishList();
+	}
+	private void removeDish(String dishName) {
+		Dish tmpDish=new Dish(dishName,0,0);
+		this.staffDao.removeDish(tmpDish);
 	}
 
 	private ArrayList<Dish> dl;
@@ -29,14 +33,14 @@ public class removeDishController extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		this.dl = getMenu();
 		String dishName = "";
-		StaffDao staffDao = new StaffDaoImpl();
+		
 
 		if (request.getParameterMap().containsKey("dishName")) {
 			dishName = request.getParameter("dishName");
 			for (Dish d : dl) {
 				if (dishName != null && dishName.equals(d.getDishName())) {
 					dl.remove(d);
-					staffDao.removeDish(dishName);
+					this.removeDish(dishName);
 					break;
 				}
 			}

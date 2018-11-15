@@ -4,6 +4,7 @@ package dao;
  * @author mehra
  * The methods that we need to save and retrieve data from the database
  */
+import model.Dish;
 public interface StaffDao {
 
 	/**
@@ -20,7 +21,7 @@ public interface StaffDao {
 
 	//public Customer getCustomer(String username, String pass); This method does not needed as we have the Login object
 
-	public int addDish(String dishName, double dishPrice, int dishInventory);
+	public int addDish(Dish dish);
 	
-	public int removeDish(String dishName);
+	public int removeDish(Dish dish);
 }

@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import db.DbManager;
 import model.Order;
 import java.util.ArrayList;
+
+import model.Dish;
 import model.DishLineItem;
 
 public class StaffDaoImpl implements StaffDao {
@@ -33,7 +35,10 @@ public class StaffDaoImpl implements StaffDao {
 		return fetchedPassword;
 	}
 	
-	public int addDish(String dishName, double dishPrice, int dishInventory) {
+	public int addDish(Dish dish) {
+		String dishName=dish.getDishName();
+		double dishPrice=dish.getPrice();
+		int dishInventory=dish.getInventory();
 		int status = 0;
 		try{
 			conn = db.getConnection();
@@ -49,8 +54,9 @@ public class StaffDaoImpl implements StaffDao {
 		return status;
 	}
 	
-	public int removeDish(String dishName) {
+	public int removeDish(Dish dish) {
 		int status = 0;
+		String dishName=dish.getDishName();
 		try{
 			conn = db.getConnection();
 			ps =conn.prepareStatement("DELETE FROM dish WHERE name=(?)");
