@@ -26,14 +26,14 @@ public class ModifyDishController extends HttpServlet {
 
 	private void printDishTable(PrintWriter out) {
 
-		out.print("<table>");
+		out.print("<table is-bordered is-striped is-narrow is-hoverable is-fullwidth>");
 		out.print("<thead><tr><th>Dish Name</th><th>Inventory</th><th>Price</th><th>Modify</th></tr></thead>");
 		out.print("<tbody id=\"dishListTable\">");
 		dl.forEach((dish) -> {
-			out.print("<tr><td><input type=\"text\" value=\"" + dish.getDishName()
-					+ "\"></input></td><td><input type=\"number\" value=\"" + dish.getInventory()
-					+ "\"></input></td><td><input type=\"number\" value=\"" + dish.getPrice()
-					+ "\"></input></td><td><button class=\"modifyButton\">Modify</button></td></tr>");
+			out.print("<tr><td><input class=\"input is-info\" type=\"text\" value=\"" + dish.getDishName()
+					+ "\"></input></td><td><input class=\"input is-info\" type=\"number\" value=\"" + dish.getInventory()
+					+ "\"></input></td><td><input class=\"input is-info\" type=\"number\" value=\"" + dish.getPrice()
+					+ "\"></input></td><td><button class=\"modifyButton button is-danger is-small is-outlined\">Modify</button></td></tr>");
 		});
 		out.print("</tbody>");
 		out.print("</table>");

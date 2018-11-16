@@ -17,36 +17,36 @@ import model.Dish;
 @WebServlet("/removeDish")
 public class removeDishController extends HttpServlet {
 	private UserDaoImpl userDaoImpl = new UserDaoImpl();
+	private ArrayList<Dish> dl;
 	StaffDao staffDao = new StaffDaoImpl();
+
 	private ArrayList<Dish> getMenu() {
 		return userDaoImpl.getDishList();
 	}
+
 	private void removeDish(String dishName) {
-		Dish tmpDish=new Dish(dishName,0,0);
+		Dish tmpDish = new Dish(dishName, 0, 0);
 		this.staffDao.removeDish(tmpDish);
 	}
-
-	private ArrayList<Dish> dl;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		this.dl = getMenu();
 		String dishName = "";
-		
 
 		if (request.getParameterMap().containsKey("dishName")) {
 			dishName = request.getParameter("dishName");
 			for (Dish d : dl) {
 				if (dishName != null && dishName.equals(d.getDishName())) {
-					dl.remove(d);
 					this.removeDish(dishName);
+					this.dl = getMenu();
 					break;
 				}
 			}
 		} else if (request.getParameterMap().containsKey("init")) {
 			this.dl.forEach((dish) -> {
-				out.print("<button class=\"dishBtn\">" + dish.getDishName() + "</button><br><br>");
+				out.print("<button class=\"dishBtn button is-danger is-medium is-outlined \">" + dish.getDishName() + "</button><br><br>");
 			});
 		}
 

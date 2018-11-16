@@ -26,10 +26,10 @@ public class CancelOrderController extends HttpServlet {
     };
     private void printOrderDetailTable(PrintWriter out){  	   
     	   this.ol=getOrderList();
-    	   out.print("<table><thead><tr><th>Order ID</th><th>Order Total</th><th>Dish Name</th><th>Dish Price</th></tr></thead><tbody id=\"orderTable\">");
+    	   out.print("<table class=\"table is-bordered is-striped is-narrow is-hoverable is-fullwidth \"><thead><tr><th>Order ID</th><th>Order Total</th><th>Dish Name</th><th>Dish Price</th></tr></thead><tbody id=\"orderTable\">");
            for(int i=0;i<ol.size();i++) {
            	 boolean firstTime=true;
-                out.print( "<tr><td rowspan=\""+(ol.get(i).getdLI().size()<1?1:ol.get(i).getdLI().size())+"\">"+ol.get(i).getOrderId()+"<div><button class=\"cancelButton\">cancel</button></div></td><td rowspan="+(ol.get(i).getdLI().size()<1?1:ol.get(i).getdLI().size())+">"+ol.get(i).getTotal()+"</td>"); 
+                out.print( "<tr><td rowspan=\""+(ol.get(i).getdLI().size()<1?1:ol.get(i).getdLI().size())+"\">"+ol.get(i).getOrderId()+"<div><button class=\"cancelButton button is-danger is-small is-outlined \">cancel</button></div></td><td rowspan="+(ol.get(i).getdLI().size()<1?1:ol.get(i).getdLI().size())+">"+ol.get(i).getTotal()+"</td>"); 
                 for(int j=0;j<ol.get(i).getdLI().size();j++) {
                	 out.print((firstTime?"":"<tr>")+"<td>"+ol.get(i).getdLI().get(j).getDishName()+"</td><td>"+ol.get(i).getdLI().get(j).getPrice()+"</td></tr>");
                	 firstTime=false;

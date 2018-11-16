@@ -1,17 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<style>
-table, td, th {
-	border: 1px solid black;
-	border-style: ridge;
-}
-table {
-	border-collapse: collapse;
-}
-</style>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+<script defer
+	src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Cancel Order</title>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"
@@ -19,12 +14,28 @@ table {
 	crossorigin="anonymous"></script>
 </head>
 <body>
-<h1> Cancel Order </h1>
-<div id="cancelTable"></div>
 
-	<a href="welcome.jsp">Return</a>
-	<br>
-	<a href="logout.jsp">Logout</a>
-<script type="text/javascript" src="cancelOrder.js" ></script>
+	<div class="container">
+		<div class="section">
+			<div class="level">
+				<div class="level-item has-text-centered">
+					<h1>Cancel Order</h1>
+				</div>
+			</div>
+			<div class="level">
+				<div class="level-item has-text-centered">
+					<div id="cancelTable"></div>
+				</div>
+			</div>
+			<div class="level">
+				<div class="level-item has-text-centered">
+					<a class="button is-link is-medium is-rounded is-outlined" href="welcome.jsp">Return</a> <a class="button is-link is-medium is-rounded is-outlined" href="logout.jsp">Logout</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<script type="text/javascript" src="cancelOrder.js"></script>
 </body>
 </html>

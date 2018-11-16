@@ -49,7 +49,6 @@ public class UserDaoImpl implements UserDao {
 					orderStatistics.put(dish.getDishName(), orderStatistics.get(dish.getDishName()) + 1);
 					
 				} else {
-					System.out.println("create new entry: "+dish.getDishName());
 					orderStatistics.put(dish.getDishName(), 1);
 					
 				}
