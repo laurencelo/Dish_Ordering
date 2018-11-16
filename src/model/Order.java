@@ -12,6 +12,11 @@ public class Order {
 	public Order() {
 		this.dLI= new ArrayList<DishLineItem>();
 	}
+	public Order(int orderId,double total, ArrayList<DishLineItem> dLI) {
+		this.orderId=orderId;
+		this.total=total;
+		this.dLI=dLI;
+	}
 
 	public void putDishLineItem(DishLineItem dLI) {
 		this.dLI.add(dLI);

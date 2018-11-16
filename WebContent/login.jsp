@@ -16,6 +16,11 @@
 	<%=new java.util.Date()%>
 	<%!int number1, number2;%>
 	<%
+		if (session != null) {
+			if (session.getAttribute("userId") != null) {
+				response.sendRedirect("welcome.jsp");
+			}
+		}
 		DbManager db = new DbManager();
 		Connection conn = (Connection) db.getConnection();
 		if (conn == null)

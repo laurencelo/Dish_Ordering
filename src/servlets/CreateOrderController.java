@@ -11,7 +11,6 @@ import java.io.PrintWriter;
 import model.Dish;
 import dao.UserDaoImpl;
 import model.Order;
-import model.DishLineItem;
 
 /**
  * Servlet implementation class serveletdemo

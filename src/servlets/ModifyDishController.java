@@ -63,10 +63,6 @@ public class ModifyDishController extends HttpServlet {
 			String modifiedName = request.getParameter("modifiedName");
 			String modifiedInventory = request.getParameter("modifiedInventory");
 			String modifiedPrice = request.getParameter("modifiedPrice");
-			System.out.println(originalName);
-			System.out.println(modifiedName);
-			System.out.println(modifiedInventory);
-			System.out.println(modifiedPrice);
 			this.dl = this.modifyDish(originalName, modifiedName, modifiedInventory, modifiedPrice);
 			printDishTable(out);
 		}

@@ -19,7 +19,6 @@ public class UserDaoImpl implements UserDao {
 	static PreparedStatement ps;
 	int queryPosition;
 	DbManager db = new DbManager();
-	HashMap<String, Integer> orderStatistics = new HashMap<>();
 
 	public ArrayList<Dish> getDishList() {
 		ArrayList<Dish> dishList = new ArrayList<Dish>();
@@ -39,32 +38,31 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	public String saveOrder(Order order) {
+		HashMap<String, Integer> orderStatistics = new HashMap<>();
 		HashSet<String> outOfOrder = new HashSet<>();
 		int[] status = new int[0];
+		ArrayList<Dish> dl = this.getDishList();
 //check dishes in this order against inventory
-		orderStatistics.clear();
 		order.getdLI().forEach((dish) -> {
-			if (orderStatistics.size() > 0) {
+
 				if (orderStatistics.containsKey(dish.getDishName())) {
 					orderStatistics.put(dish.getDishName(), orderStatistics.get(dish.getDishName()) + 1);
-					System.out.println(orderStatistics.get(dish.getDishName()));
+					
 				} else {
+					System.out.println("create new entry: "+dish.getDishName());
 					orderStatistics.put(dish.getDishName(), 1);
-					System.out.println(orderStatistics.get(dish.getDishName()));
+					
 				}
-			} else {
-				orderStatistics.put(dish.getDishName(), 1);
-				System.out.println(orderStatistics.get(dish.getDishName()));
-			}
+
 		});
-		ArrayList<Dish> dl = this.getDishList();
 		orderStatistics.keySet().forEach((dish) -> {
 			dl.forEach((fetched) -> {
-				if (fetched.getInventory() < orderStatistics.get(dish)) {
+				if (dish.equals(fetched.getDishName())&&fetched.getInventory() < orderStatistics.get(dish)) {
 					outOfOrder.add(dish);
 				}
 			});
 		});
+//		Dishes in the order will not outnumber inventory
 		if (outOfOrder.size() == 0) {
 			try {
 				Statement stmt = conn.createStatement();
@@ -82,6 +80,21 @@ public class UserDaoImpl implements UserDao {
 					}
 
 				});
+//				update inventory after an oder is placed
+				orderStatistics.entrySet().forEach((dish) -> {
+					dl.forEach((listDish) -> {
+						if (listDish.getDishName().equals(dish.getKey())) {
+							int newInventory = listDish.getInventory() - dish.getValue();
+							try {
+								stmt.addBatch("UPDATE dish SET inventory=" + newInventory + " where name=\""
+										+ listDish.getDishName() + "\";");
+							} catch (SQLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+						}
+					});
+				});
 
 				status = stmt.executeBatch();
 				order.getdLI().forEach((dish) -> {
@@ -98,25 +111,23 @@ public class UserDaoImpl implements UserDao {
 			}
 			return "Saving order success!";
 		} else {
-			StringBuilder t=new StringBuilder();
+			StringBuilder t = new StringBuilder();
 			t.append("Cannot place order, because following dish(es) will be out of stock: ");
-			outOfOrder.forEach((dish)->{
-				t.append(dish+" ");
+			outOfOrder.forEach((dish) -> {
+				t.append(dish + " ");
 			});
 			return t.toString();
 		}
 
 	}
 
-//	public ArrayList<Dish> modifyDish(String originalName, String modifiedName, String modifiedInventory,
-//			String modifiedPrice) {
 	public ArrayList<Dish> modifyDish(Dish oldDish, Dish newDish) {
 		int status = 0;
 		try {
 
 			conn = db.getConnection();
 			ps = conn.prepareStatement("UPDATE dish SET name=?, inventory=?, price=? where name=?");
-			
+
 			ps.setString(1, newDish.getDishName());
 			ps.setInt(2, newDish.getInventory());
 			ps.setDouble(3, newDish.getPrice());
