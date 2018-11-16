@@ -15,8 +15,13 @@
 	crossorigin="anonymous"></script>
 </head>
 <body>
+	<div class="level">
+		<div class="level-item has-text-centered">
+			<h1 class="subtitle is-1">Remove Dish</h1>
+		</div>
+	</div>
 
-	
+
 	<%
 		if (session != null) {
 			if (session.getAttribute("userId") != null) {
@@ -27,7 +32,8 @@
 				out.println("</head>");
 				out.println("<body>");
 				out.println("<div class=\"container\">");
-				out.print("<div class=\"level\"><div class=\"level-item has-text-centered\"><div>Choose a dish to remove:</div></div></div>");
+				out.print(
+						"<div class=\"level\"><div class=\"level-item has-text-centered\"><div>Choose a dish to remove:</div></div></div>");
 				out.println("<div class=\"level\">");
 				out.println("<div class=\"level-item has-text-centered\">");
 				out.print("<br>");

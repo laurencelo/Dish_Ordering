@@ -16,15 +16,20 @@
 	
 </script>
 <style>
-div.section{
-height:50vh;
-margin-top:25vh;
+div.section {
+	height: 50vh;
+	margin-top: 25vh;
 }
 </style>
 </head>
 <body>
 	<div class="container">
 		<div class="section">
+			<div class="level">
+				<div class="level-item has-text-centered">
+					<h1 class="subtitle is-1">Add Dish</h1>
+				</div>
+			</div>
 			<form name="regform" action="addDish" method="post"
 				onsubmit="return regValidate()">
 
@@ -39,7 +44,6 @@ margin-top:25vh;
 									"<div class=\"level-item has-text-centered\">Dish Inventory: <input class=\"input is-success\" type=\"number\" name=\"dishinventory\"></div></div>");
 							out.println(
 									"<div class=\"level\"><div class=\"level-item has-text-centered\"><input  class=\"button is-primary is-medium is-rounded is-outlined\" type=\"submit\" name=\"submit\" value=\"Add Dish\" >");
-							out.println("<input type=\"reset\" class=\"button is-primary is-medium is-rounded is-outlined\" name=\"reset\"></div></div>");
 						} else {
 							out.println("<div>Please log in first</div>");
 						}
@@ -52,7 +56,8 @@ margin-top:25vh;
 			</form>
 			<div class="level">
 				<div class="level-item has-text-centered">
-					<a class="button is-link is-medium is-rounded is-outlined" href="welcome.jsp">return</a>
+					<a class="button is-link is-medium is-rounded is-outlined"
+						href="welcome.jsp">return</a>
 				</div>
 			</div>
 		</div>

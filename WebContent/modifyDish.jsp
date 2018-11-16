@@ -22,12 +22,18 @@
 		<div class="section">
 			<div class="level">
 				<div class="level-item has-text-centered">
+					<h1 class="subtitle is-1">Modify Dish</h1>
+				</div>
+			</div>
+			<div class="level">
+				<div class="level-item has-text-centered">
 					<div id="modifyDishList"></div>
 				</div>
 			</div>
 			<div class="level">
 				<div class="level-item has-text-centered">
-					<a class="button is-link is-medium is-outlined is-rounded" href="welcome.jsp">return</a>
+					<a class="button is-link is-medium is-outlined is-rounded"
+						href="welcome.jsp">return</a>
 				</div>
 			</div>
 		</div>

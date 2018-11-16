@@ -19,6 +19,11 @@
 		<div class="section">
 			<div class="level">
 				<div class="level-item has-text-centered">
+					<h1 class="subtitle is-1">Login Page</h1>
+				</div>
+			</div>
+			<div class="level">
+				<div class="level-item has-text-centered">
 					<%
 						out.print("Hello!");
 					%>
@@ -47,18 +52,21 @@
 
 						<div class="level">
 							<div class="level-item has-text-centered">
-								User Id: <input class="input info" type="text" name="userId" id="username">
-								Password: <input class="input info" type="password" name="password" id="password">
+								User Id: <input class="input info" type="text" name="userId"
+									id="username"> Password: <input class="input info"
+									type="password" name="password" id="password">
 							</div>
 						</div>
 
-						<input class="button is-primary is-medium is-rounded is-outlined" type="submit" name="submit" value="login"><br>
+						<input class="button is-primary is-medium is-rounded is-outlined"
+							type="submit" name="submit" value="login"><br>
 					</form>
 				</div>
 			</div>
 			<div class="level">
 				<div class="level-item has-text-centered">
-					<a class="button is-link is-medium is-rounded is-outlined" href="index.jsp">Return</a>
+					<a class="button is-link is-medium is-rounded is-outlined"
+						href="index.jsp">Return</a>
 				</div>
 			</div>
 		</div>

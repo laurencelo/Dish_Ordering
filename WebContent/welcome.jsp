@@ -23,6 +23,11 @@ div.section {
 
 	<div class="container">
 		<div class="section">
+		<div class="level">
+			<div class="level-item has-text-centered">
+				<h1 class="subtitle is-1">Administrator Mode</h1>
+			</div>
+		</div>
 			<div class="level">
 				<div class="level-item has-text-centered">
 					<button class="button is-link is-large is-rounded is-outlined" onclick="window.location.href='cancelOrder.jsp'">

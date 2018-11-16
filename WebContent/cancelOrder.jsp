@@ -19,7 +19,7 @@
 		<div class="section">
 			<div class="level">
 				<div class="level-item has-text-centered">
-					<h1>Cancel Order</h1>
+					<h1  class="subtitle is-1">Cancel Order</h1>
 				</div>
 			</div>
 			<div class="level">

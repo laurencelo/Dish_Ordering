@@ -24,6 +24,11 @@ div.section {
 		<div class="section">
 			<div class="level">
 				<div class="level-item has-text-centered">
+					<h1 class="subtitle is-1">Dish Ordering System</h1>
+				</div>
+			</div>
+			<div class="level">
+				<div class="level-item has-text-centered">
 					<button class="button is-primary is-large is-rounded is-outlined"
 						id="adminMode">Admin Mode</button>
 				</div>
