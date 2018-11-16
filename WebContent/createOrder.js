@@ -1,15 +1,16 @@
 $(document).ready(()=>{
+	    $("#checkoutOrder").hide();
         [...document.getElementsByClassName("addDish")].forEach((dish)=>{
             dish.addEventListener("click",()=>{
                 $.get("createOrder",{addDish:true,dishName:dish.innerHTML},(data,status)=>{
                     $("#orderTable").empty().append(data);
-                })
+                });
+                $("#checkoutOrder").show();
             })
         });
         
         $("#checkoutOrder").click(()=>{
         	if(document.getElementById("#rowTotal")==null){
-        		console.log("Null rowTotal");
 	        	$.post("createOrder",(data)=>{
 	        		$("#orderTable").append("<tr id=\"rowTotal\"><td>Total:</td><td>"+data+"</td></tr>");
 	            });

@@ -38,11 +38,11 @@ public class CancelOrderController extends HttpServlet {
            out.print("</tbody></table>");
     }
     
-    private void cancelOrder(int orderID) {
+    private void cancelOrder(Order order) {
+    	int orderID=order.getOrderId();
     	for(int i=0;i<this.ol.size();i++) {
     		if (this.ol.get(i).getOrderId()==orderID) {
     			this.ol=this.staffDaoImpl.save(ol.get(i));
-//    			ol.remove(i);
     			break;
     		}
     	};
@@ -69,7 +69,8 @@ public class CancelOrderController extends HttpServlet {
 		} else if (request.getParameterMap().containsKey("orderID")) {
 			HttpSession session=request.getSession(false);
 			if(session!=null) {
-			cancelOrder(Integer.parseInt(request.getParameter("orderID")));
+			Order order=new Order(Integer.parseInt(request.getParameter("orderID")),0,new ArrayList<DishLineItem>());
+			cancelOrder(order);
 			printOrderDetailTable(out);}
 			else {
 				out.print("<div>Please Login first!</div>");
@@ -77,17 +78,5 @@ public class CancelOrderController extends HttpServlet {
 		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		doGet(request, response);
-		// String dishName = request.getParameter("dishName");
-		// System.out.println(dishName);
-		PrintWriter out = response.getWriter();
-	}
 
 }

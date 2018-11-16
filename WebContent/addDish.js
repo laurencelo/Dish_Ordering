@@ -1,3 +1,4 @@
+"use strict";
 $(document).ready(
 		
 		$("form").submit((event)=>{

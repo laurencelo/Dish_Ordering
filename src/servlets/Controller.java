@@ -37,8 +37,6 @@ public class Controller extends HttpServlet {
 //			https://www.javatpoint.com/servlet-http-session-login-and-logout-example
 			HttpSession session=request.getSession();
 			session.setAttribute("userId", request.getParameter("userId"));
-			System.out.println(request.getParameter("userId"));
-			System.out.println(session.getAttribute("userId"));
 			request.setAttribute("message", "Login success");
 			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}else if(submitType.equals("register")){

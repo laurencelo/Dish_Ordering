@@ -20,8 +20,8 @@
 		if (session != null) {
 			if (session.getAttribute("userId") != null) {				
 				out.println("Dish Name: <input type=\"text\" name=\"dishname\"> <br>");
-				out.println("Dish Price: <input type=\"text\" name=\"dishprice\"> <br>");
-				out.println("Dish Inventory: <input type=\"text\" name=\"dishinventory\"> <br>");	
+				out.println("Dish Price: <input type=\"number\" name=\"dishprice\"> <br>");
+				out.println("Dish Inventory: <input type=\"number\" name=\"dishinventory\"> <br>");	
 				out.println("<div id=\"password_error\"></div><br>");
 				out.println("<input type=\"submit\" name=\"submit\" value=\"addDish\" >");
 				out.println("<input type=\"reset\" name=\"reset\">");
