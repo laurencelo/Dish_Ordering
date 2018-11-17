@@ -39,8 +39,8 @@ public class UC2_LoginTest {
 		Thread.sleep(500);
 		WebElement uname = driver.findElement(By.id("username"));
 		WebElement pwd = driver.findElement(By.id("password"));
-		uname.sendKeys("randomName");
-		pwd.sendKeys("randomPass");
+		uname.sendKeys("111");
+		pwd.sendKeys("111");
 		Thread.sleep(500);
 		WebElement loginBtn = driver.findElement(By.name("submit"));
 		loginBtn.click();
