@@ -5,7 +5,7 @@ import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class LogoutTest {
+public class UC7_LogoutTest {
 	WebDriver driver;
 	
 	@Before
