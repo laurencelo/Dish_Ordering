@@ -24,7 +24,7 @@ div.section {
 		if (session != null) {
 			if (session.getAttribute("userId") == null) {
 				response.sendRedirect("login.jsp");
-			} 
+			}
 		}
 	%>
 	<div class="container">
@@ -37,14 +37,18 @@ div.section {
 			<div class="level">
 				<div class="level-item has-text-centered">
 					<button class="button is-link is-large is-rounded is-outlined"
-						onclick="window.location.href='cancelOrder.jsp'">Cancel
-						Order</button>
+						id=addDish onclick="window.location.href='addDish.jsp'">Add
+						Dish</button>
+
 				</div>
 			</div>
 			<div class="level">
 				<div class="level-item has-text-centered">
+
 					<button class="button is-link is-large is-rounded is-outlined"
-						onclick="window.location.href='addDish.jsp'">Add Dish</button>
+						id=modifyDish onclick="window.location.href='modifyDish.jsp'">Modify
+						Dish</button>
+
 				</div>
 			</div>
 			<div class="level">
@@ -55,9 +59,11 @@ div.section {
 			</div>
 			<div class="level">
 				<div class="level-item has-text-centered">
+
 					<button class="button is-link is-large is-rounded is-outlined"
-						onclick="window.location.href='modifyDish.jsp'">Modify
-						Dish</button>
+						id=cancelOrder onclick="window.location.href='cancelOrder.jsp'">
+						Cancel Order</button>
+
 				</div>
 			</div>
 			<div class="level">
@@ -68,6 +74,8 @@ div.section {
 			</div>
 		</div>
 	</div>
+	</div>
+
 	<script>
 	$(document).ready(()=>{
         $("#removeDish").click(()=>{
