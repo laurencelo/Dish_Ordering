@@ -52,7 +52,7 @@
 
 						<div class="level">
 							<div class="level-item has-text-centered">
-								User Id: <input class="input info" type="text" name="userId"
+								User Id: <input class="input info" type="number" name="userId"
 									id="username"> Password: <input class="input info"
 									type="password" name="password" id="password">
 							</div>
