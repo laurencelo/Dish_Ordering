@@ -11,7 +11,7 @@ public class UC2_LoginTest {
 	public void openLogInPage() throws InterruptedException{
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/ooad/");
+		driver.get("http://localhost:8080/OOADProject/");
 	}
 	
 	@Test

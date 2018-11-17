@@ -11,7 +11,7 @@ public class UC4_ModifyDishTest {
 	public void openModifyDishPage() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/ooad/");
+		driver.get("http://localhost:8080/OOADProject/");
 		driver.findElements(By.id("adminMode")).get(0).click();
 		Thread.sleep(500);
 		driver.findElement(By.id("username")).sendKeys("1");

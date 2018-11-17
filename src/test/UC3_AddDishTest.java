@@ -1,5 +1,5 @@
 package test;
-
+import java.util.*;
 import org.junit.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,7 +11,7 @@ public class UC3_AddDishTest {
 	public void openAddDishPage() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/ooad/");
+		driver.get("http://localhost:8080/OOADProject/");
 		driver.findElements(By.id("adminMode")).get(0).click();
 		Thread.sleep(500);
 		driver.findElement(By.id("username")).sendKeys("1");
@@ -37,7 +37,7 @@ public class UC3_AddDishTest {
 		driver.findElement(By.name("submit")).click();
 		Thread.sleep(500);
 		String successMsg = driver.switchTo().alert().getText();
-		Assert.assertEquals("dish test added successfully!", successMsg);
+		Assert.assertEquals("Add dish successfully!", successMsg);
 	}
 
 	@After

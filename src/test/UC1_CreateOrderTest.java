@@ -12,7 +12,7 @@ public class UC1_CreateOrderTest {
 	public void openCreateOrderPage() throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		driver = new ChromeDriver();
-		driver.get("http://localhost:8080/ooad/");
+		driver.get("http://localhost:8080/OOADProject/");
 		Thread.sleep(500);
 	}
 	

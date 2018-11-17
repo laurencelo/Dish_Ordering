@@ -7,7 +7,7 @@ $(document).ready(
 			var dishinventory = document.forms["regform"]["dishinventory"].value;
 			event.preventDefault();
 			$.post("addDish",{submit:"addDish",dishname,dishinventory,dishprice},()=>{
-				alert("dish "+dishname+" added successfully!");
+				alert("Add dish successfully!");
 				window.location.href ="modifyDish.jsp"
 			})
 			
