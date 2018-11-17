@@ -39,7 +39,7 @@ public class AddDishController extends HttpServlet {
 			this.addDish(dishName, Double.toString(dishPrice), Integer.toString(dishInventory));
 		} else {
 			request.setAttribute("message", "Password doesn't match, please enter correct password!");
-			request.getRequestDispatcher("register.jsp").forward(request, response);
+			request.getRequestDispatcher("welcome.jsp").forward(request, response);
 		}
 
 	}

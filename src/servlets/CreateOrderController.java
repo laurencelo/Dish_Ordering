@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import model.Dish;
 import dao.UserDaoImpl;
 import model.Order;
+import model.DishList;
 
 /**
  * Servlet implementation class serveletdemo
@@ -19,14 +20,26 @@ import model.Order;
 public class CreateOrderController extends HttpServlet {
 	private UserDaoImpl userDaoImpl = new UserDaoImpl();
 	private Order order = new Order();
-	private ArrayList<Dish> dl;
+	private DishList dl;
 
-	private ArrayList<Dish> getMenu() {
+	private DishList getMenu() {
 		return userDaoImpl.getDishList();
 	}
 
 	private double getTotal() {
 		return this.order.getTotal();
+	}
+	
+	private String checkOut() {
+		return this.userDaoImpl.saveOrder(this.order);
+	}
+
+	private void setDishLineItem(String dishName, DishList dl) {
+		for (Dish d : dl.getList()) {
+			if (dishName.equals(d.getDishName())) {
+				this.order.putDishLineItem(d.getLineItem());
+			}
+		}
 	}
 
 	/**
@@ -40,17 +53,13 @@ public class CreateOrderController extends HttpServlet {
 		this.dl = getMenu();
 		PrintWriter out = response.getWriter();
 		if (request.getParameterMap().containsKey("addDish") && request.getParameter("addDish").equals("true")) {
-			for (Dish d : dl) {
-				if (request.getParameter("dishName").equals(d.getDishName())) {
-					this.order.putDishLineItem(d.getLineItem());
-				}
-			}
-			this.order.getdLI().forEach((dish)->{
+			this.setDishLineItem(request.getParameter("dishName"), dl);
+			this.order.getdLI().forEach((dish) -> {
 				out.print("<tr><td>" + dish.getDishName() + "</td><td>$" + dish.getPrice() + "</td></tr>");
 			});
 		} else if (request.getParameterMap().containsKey("swipeCreditCard")
 				&& request.getParameter("swipeCreditCard").equals("true")) {
-			out.print(this.userDaoImpl.saveOrder(this.order));
+			out.print(checkOut());
 			this.order = new Order();
 		} else if (request.getParameterMap().containsKey("resetOrder")
 				&& request.getParameter("resetOrder").equals("true")) {

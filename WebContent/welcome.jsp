@@ -20,40 +20,50 @@ div.section {
 <title>Welcome Page</title>
 </head>
 <body>
-
+	<%
+		if (session != null) {
+			if (session.getAttribute("userId") == null) {
+				response.sendRedirect("login.jsp");
+			} 
+		}
+	%>
 	<div class="container">
 		<div class="section">
-		<div class="level">
-			<div class="level-item has-text-centered">
-				<h1 class="subtitle is-1">Administrator Mode</h1>
-			</div>
-		</div>
 			<div class="level">
 				<div class="level-item has-text-centered">
-					<button class="button is-link is-large is-rounded is-outlined" onclick="window.location.href='cancelOrder.jsp'">
-						Cancel Order</button>
+					<h1 class="subtitle is-1">Administrator Mode</h1>
 				</div>
 			</div>
 			<div class="level">
 				<div class="level-item has-text-centered">
-					<button class="button is-link is-large is-rounded is-outlined" onclick="window.location.href='addDish.jsp'">Add
+					<button class="button is-link is-large is-rounded is-outlined"
+						onclick="window.location.href='cancelOrder.jsp'">Cancel
+						Order</button>
+				</div>
+			</div>
+			<div class="level">
+				<div class="level-item has-text-centered">
+					<button class="button is-link is-large is-rounded is-outlined"
+						onclick="window.location.href='addDish.jsp'">Add Dish</button>
+				</div>
+			</div>
+			<div class="level">
+				<div class="level-item has-text-centered">
+					<button class="button is-link is-large is-rounded is-outlined"
+						id=removeDish>Remove Dish</button>
+				</div>
+			</div>
+			<div class="level">
+				<div class="level-item has-text-centered">
+					<button class="button is-link is-large is-rounded is-outlined"
+						onclick="window.location.href='modifyDish.jsp'">Modify
 						Dish</button>
 				</div>
 			</div>
 			<div class="level">
 				<div class="level-item has-text-centered">
-					<button class="button is-link is-large is-rounded is-outlined" id=removeDish>Remove Dish</button>
-				</div>
-			</div>
-			<div class="level">
-				<div class="level-item has-text-centered">
-					<button class="button is-link is-large is-rounded is-outlined" onclick="window.location.href='modifyDish.jsp'">Modify
-						Dish</button>
-				</div>
-			</div>
-			<div class="level">
-				<div class="level-item has-text-centered">
-					<a class="button is-link is-large is-rounded is-outlined" href="logout.jsp">logout</a>
+					<a class="button is-link is-large is-rounded is-outlined"
+						href="logout.jsp">logout</a>
 				</div>
 			</div>
 		</div>

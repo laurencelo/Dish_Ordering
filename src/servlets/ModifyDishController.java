@@ -16,6 +16,9 @@ import model.Dish;
 public class ModifyDishController extends HttpServlet {
 	private UserDaoImpl userDaoImpl = new UserDaoImpl();
 	private ArrayList<Dish> dl;
+	private ArrayList<Dish> getDishList(){
+		 return userDaoImpl.getDishList().getList();
+	}
 
 	private ArrayList<Dish> modifyDish(String originalName, String modifiedName, String modifiedInventory,
 			String modifiedPrice) {
@@ -50,7 +53,7 @@ public class ModifyDishController extends HttpServlet {
 
 		if (request.getParameterMap().containsKey("init")) {
 
-			this.dl = userDaoImpl.getDishList();
+			this.dl = this.getDishList();
 			HttpSession session = request.getSession(false);
 			if (session.getAttribute("userId") == null) {
 				out.print("<div>Please Log in first</div>");

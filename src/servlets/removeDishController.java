@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
@@ -13,14 +14,15 @@ import dao.StaffDao;
 import dao.StaffDaoImpl;
 import dao.UserDaoImpl;
 import model.Dish;
+import model.DishList;
 
 @WebServlet("/removeDish")
 public class removeDishController extends HttpServlet {
 	private UserDaoImpl userDaoImpl = new UserDaoImpl();
-	private ArrayList<Dish> dl;
+	private DishList dl;
 	StaffDao staffDao = new StaffDaoImpl();
 
-	private ArrayList<Dish> getMenu() {
+	private DishList getMenu() {
 		return userDaoImpl.getDishList();
 	}
 
@@ -37,15 +39,15 @@ public class removeDishController extends HttpServlet {
 
 		if (request.getParameterMap().containsKey("dishName")) {
 			dishName = request.getParameter("dishName");
-			for (Dish d : dl) {
+			for (Dish d : dl.getList()) {
 				if (dishName != null && dishName.equals(d.getDishName())) {
 					this.removeDish(dishName);
-					this.dl = getMenu();
+					this.dl.UpdateDishList(this.getMenu()); 
 					break;
 				}
 			}
 		} else if (request.getParameterMap().containsKey("init")) {
-			this.dl.forEach((dish) -> {
+			this.dl.getList().forEach((dish) -> {
 				out.print("<button class=\"dishBtn button is-danger is-medium is-outlined \">" + dish.getDishName() + "</button><br><br>");
 			});
 		}

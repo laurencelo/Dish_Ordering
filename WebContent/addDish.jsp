@@ -39,7 +39,7 @@ div.section {
 							out.println("<div class=\"level\">"
 									+ "<div class=\"level-item has-text-centered\">Dish Name: <input class=\"input is-success\" type=\"text\" name=\"dishname\"> </div>");
 							out.println(
-									"<div class=\"level-item has-text-centered\">Dish Price: <input class=\"input is-success\" type=\"number\" name=\"dishprice\"></div>");
+									"<div class=\"level-item has-text-centered\">Dish Price: <input class=\"input is-success\" step=\"0.01\" type=\"number\" name=\"dishprice\"></div>");
 							out.println(
 									"<div class=\"level-item has-text-centered\">Dish Inventory: <input class=\"input is-success\" type=\"number\" name=\"dishinventory\"></div></div>");
 							out.println(

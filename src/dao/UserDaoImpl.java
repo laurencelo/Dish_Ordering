@@ -13,6 +13,7 @@ import model.Dish;
 import model.Order;
 import java.util.HashMap;
 import java.util.HashSet;
+import model.DishList;
 
 public class UserDaoImpl implements UserDao {
 	static Connection conn;
@@ -20,7 +21,7 @@ public class UserDaoImpl implements UserDao {
 	int queryPosition;
 	DbManager db = new DbManager();
 
-	public ArrayList<Dish> getDishList() {
+	public DishList getDishList() {
 		ArrayList<Dish> dishList = new ArrayList<Dish>();
 		try {
 			conn = db.getConnection();
@@ -34,14 +35,16 @@ public class UserDaoImpl implements UserDao {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return dishList;
+		DishList dl=new DishList();
+		dl.setList(dishList);
+		return dl;
 	}
 
 	public String saveOrder(Order order) {
 		HashMap<String, Integer> orderStatistics = new HashMap<>();
 		HashSet<String> outOfOrder = new HashSet<>();
 		int[] status = new int[0];
-		ArrayList<Dish> dl = this.getDishList();
+		DishList dl = this.getDishList();
 //check dishes in this order against inventory
 		order.getdLI().forEach((dish) -> {
 
@@ -55,7 +58,7 @@ public class UserDaoImpl implements UserDao {
 
 		});
 		orderStatistics.keySet().forEach((dish) -> {
-			dl.forEach((fetched) -> {
+			dl.getList().forEach((fetched) -> {
 				if (dish.equals(fetched.getDishName())&&fetched.getInventory() < orderStatistics.get(dish)) {
 					outOfOrder.add(dish);
 				}
@@ -81,7 +84,7 @@ public class UserDaoImpl implements UserDao {
 				});
 //				update inventory after an oder is placed
 				orderStatistics.entrySet().forEach((dish) -> {
-					dl.forEach((listDish) -> {
+					dl.getList().forEach((listDish) -> {
 						if (listDish.getDishName().equals(dish.getKey())) {
 							int newInventory = listDish.getInventory() - dish.getValue();
 							try {
@@ -137,6 +140,6 @@ public class UserDaoImpl implements UserDao {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return status == 0 ? null : getDishList();
+		return status == 0 ? null : getDishList().getList();
 	}
 }

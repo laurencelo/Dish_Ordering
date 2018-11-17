@@ -25,7 +25,7 @@
 		</div>
 		<%
 			UserDaoImpl userDaoImpl = new UserDaoImpl();
-			ArrayList<Dish> dl = userDaoImpl.getDishList();
+			ArrayList<Dish> dl = userDaoImpl.getDishList().getList();
 			out.print("<div  id=\"menuTable\"><h1>Menu</h1>");
 			out.print(
 					"<table class=\"table table is-bordered is-striped is-narrow is-hoverable is-fullwidth \"><thead><tr><th>Dish Name</th><th>Price</th></tr></thead><tbody >");
