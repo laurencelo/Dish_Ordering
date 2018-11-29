@@ -16,49 +16,55 @@ public class UC2_LoginTest {
 	
 	@Test
 	public void testLoginSuccess() throws InterruptedException{
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		WebElement adminMode = driver.findElements(By.id("adminMode")).get(0);
+		Thread.sleep(3000);
 		adminMode.click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		WebElement uname = driver.findElement(By.id("username"));
 		WebElement pwd = driver.findElement(By.id("password"));
 		uname.sendKeys("1");
 		pwd.sendKeys("user1");
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		WebElement loginBtn = driver.findElement(By.name("submit"));
+		Thread.sleep(3000);
 		loginBtn.click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		Assert.assertEquals("Welcome Page", driver.getTitle());
 	}
 	
 	@Test
 	public void testLoginFailure() throws InterruptedException {
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		WebElement adminMode = driver.findElements(By.id("adminMode")).get(0);
+		Thread.sleep(3000);
 		adminMode.click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		WebElement uname = driver.findElement(By.id("username"));
 		WebElement pwd = driver.findElement(By.id("password"));
 		uname.sendKeys("111");
 		pwd.sendKeys("111");
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		WebElement loginBtn = driver.findElement(By.name("submit"));
+		Thread.sleep(3000);
 		loginBtn.click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		Assert.assertNotEquals("Welcome Page", driver.getTitle());
 	}
 	
 	@Test
 	public void returnToHomePage() throws InterruptedException{
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		WebElement adminMode = driver.findElements(By.id("adminMode")).get(0);
+		Thread.sleep(3000);
 		adminMode.click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		WebElement returnBtn = driver.findElement(By.tagName("a"));
+		Thread.sleep(3000);
 		returnBtn.click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		Assert.assertEquals("Home Page", driver.getTitle());
-		Thread.sleep(500);
+		Thread.sleep(3000);
 	}
 
 	@After

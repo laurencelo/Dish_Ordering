@@ -12,20 +12,23 @@ public class UC4_ModifyDishTest {
 		System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("http://localhost:8080/OOADProject/");
+		Thread.sleep(3000);
 		driver.findElements(By.id("adminMode")).get(0).click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		driver.findElement(By.id("username")).sendKeys("1");
 		driver.findElement(By.id("password")).sendKeys("user1");
+		Thread.sleep(3000);
 		driver.findElement(By.name("submit")).click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		driver.findElement(By.id("modifyDish")).click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 	}
 	
 	@Test
 	public void returnToAdminMode() throws InterruptedException {
+		Thread.sleep(3000);
 		driver.findElement(By.tagName("a")).click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		Assert.assertEquals("Welcome Page", driver.getTitle());
 	}
 	
@@ -41,12 +44,13 @@ public class UC4_ModifyDishTest {
 		name.sendKeys("mdfTest");
 		inv.sendKeys("999");
 		price.sendKeys("999");
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		driver.findElements(By.className("modifyButton")).get(0).click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		String successMsg = driver.switchTo().alert().getText();
+		Thread.sleep(3000);
 		driver.switchTo().alert().accept();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		Assert.assertEquals("dish modified successfully!", successMsg);
 	}
 	

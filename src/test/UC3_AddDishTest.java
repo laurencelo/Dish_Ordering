@@ -13,19 +13,19 @@ public class UC3_AddDishTest {
 		driver = new ChromeDriver();
 		driver.get("http://localhost:8080/OOADProject/");
 		driver.findElements(By.id("adminMode")).get(0).click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		driver.findElement(By.id("username")).sendKeys("1");
 		driver.findElement(By.id("password")).sendKeys("user1");
 		driver.findElement(By.name("submit")).click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		driver.findElement(By.id("addDish")).click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 	}
 
 	@Test
 	public void returnToAdminMode() throws InterruptedException {
 		driver.findElement(By.tagName("a")).click();
-		Thread.sleep(500);
+		Thread.sleep(3000);;
 		Assert.assertEquals("Welcome Page", driver.getTitle());
 	}
 	
@@ -34,8 +34,9 @@ public class UC3_AddDishTest {
 		driver.findElement(By.name("dishname")).sendKeys("testDish");
 		driver.findElement(By.name("dishprice")).sendKeys("11.11");
 		driver.findElement(By.name("dishinventory")).sendKeys("1111");
+		Thread.sleep(3000);
 		driver.findElement(By.name("submit")).click();
-		Thread.sleep(500);
+		Thread.sleep(3000);
 		String successMsg = driver.switchTo().alert().getText();
 		Assert.assertEquals("Add dish successfully!", successMsg);
 	}
